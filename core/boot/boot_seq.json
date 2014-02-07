@@ -1,0 +1,8 @@
+[
+  "load_config",
+  "load_logger",
+  "load_router",
+  "load_db",
+  "load_middleware",
+  "start_server"
+]
