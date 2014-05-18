@@ -21,6 +21,7 @@ global.app = app;
 var boot_seq = require('./core/boot/boot_seq.json');
 
 // Load up boot items
+// After this, the server start running
 boot_seq.forEach(function(boot_filename) {
   var bitem = require('./core/boot/' + boot_filename + '.js');
 
