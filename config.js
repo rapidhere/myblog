@@ -14,3 +14,9 @@ exports.static_root = path.join(__dirname, 'static')
 
 // the static root url
 exports.static_url = '/static';
+
+// availabe apps
+exports.apps = [
+  'auth',
+  'term',
+];

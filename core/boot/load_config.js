@@ -18,4 +18,7 @@ exports.boot = function(app) {
 
   // static url = /static
   app.set('static_url', config.static_url || '/static');
+
+  // apps
+  app.set('apps', config.apps || []);
 };
