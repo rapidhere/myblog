@@ -26,6 +26,6 @@ exports.run = function() {
   boot_seq.forEach(function(boot_filename) {
     var bitem = require('./boot.d/' + boot_filename + '.js');
 
-   bitem.boot(app);
+    bitem.boot(app);
   });
 }
