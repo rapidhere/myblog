@@ -13,9 +13,9 @@ var app = express();
 global.app = app;
 
 /* 
- * Load boot sequence from boot/boot_seq.json
+ * Load boot sequence from boot.d/boot_seq.json
  *
- * Each boot file must has a `boot` function take `app` assert
+ * Each boot file must has a `boot` function take `app` as
  * the only argument. 
 */
 exports.run = function() {

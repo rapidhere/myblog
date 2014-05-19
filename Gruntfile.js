@@ -14,7 +14,7 @@ module.exports = function(grunt) {
         'tasks': ['load-server'],
         'options': {
           'interval': 1000,
-          'interrupte': true,
+          'spawn': true, 
         },
       }
     },
@@ -28,9 +28,20 @@ module.exports = function(grunt) {
       grunt.log.writeln('Loading/Reloading server ...');
 
       var boot = require('./core/boot.js');
+      var pid = process.pid;
+      var pid_file = './.pid';
+
+      if(grunt.file.isFile(pid_file)) {
+        grunt.log.writeln('Find previous server ...');
+        var last_pid = grunt.file.read(pid_file);
+
+        process.kill(last_pid);
+        grunt.log.ok('Previous server killed ...');
+      }
 
       boot.run();
-
+      
+      grunt.file.write(pid_file, pid);
       grunt.log.ok('The server start running on port 8080 ...');
     }
   );
@@ -39,5 +50,5 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
 
   // register tasks
-  grunt.registerTask('start-watcher', ['load-server', 'watch']);
+  grunt.registerTask('start-watcher', ['watch']);
 };
