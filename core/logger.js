@@ -43,10 +43,10 @@ Logger.prototype.append_log = append_log = function(level, client, txt) {
   // get Level string
   var level_string;
   switch(level) {
-    case Logger.LOG_LV_INFO: level_string = 'II'; break;
-    case Logger.LOG_LV_WARN: level_string = 'WW'; break;
-    case Logger.LOG_LV_ERROR: level_string = 'EE'; break;
-    case Logger.LOG_LV_DEBUG: level_string = 'DD'; break;
+    case this.LOG_LV_INFO: level_string = 'II'; break;
+    case this.LOG_LV_WARN: level_string = 'WW'; break;
+    case this.LOG_LV_ERROR: level_string = 'EE'; break;
+    case this.LOG_LV_DEBUG: level_string = 'DD'; break;
   }
 
   log_txt = level_string + '  [' + time_string + '] ' + 
@@ -57,10 +57,10 @@ Logger.prototype.append_log = append_log = function(level, client, txt) {
   this.log_file.write(log_txt);
 };
 
-Logger.prototype.log_info     = _.partial(append_log, Logger.LOG_LV_INFO);
-Logger.prototype.log_warning  = _.partial(append_log, Logger.LOG_LV_WARN);
-Logger.prototype.log_error    = _.partial(append_log, Logger.LOG_LV_ERROR);
-Logger.prototype.log_debug    = _.partial(append_log, Logger.LOG_LV_DEBUG);
+Logger.prototype.log_info     = _.partial(append_log, Logger.prototype.LOG_LV_INFO);
+Logger.prototype.log_warning  = _.partial(append_log, Logger.prototype.LOG_LV_WARN);
+Logger.prototype.log_error    = _.partial(append_log, Logger.prototype.LOG_LV_ERROR);
+Logger.prototype.log_debug    = _.partial(append_log, Logger.prototype.LOG_LV_DEBUG);
 
 // Global single logger
 var theLogger = null;

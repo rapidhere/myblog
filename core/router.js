@@ -6,9 +6,12 @@
 var express = require('express');
 var isArray = require('util').isArray;
 
+var router;
+
 var register_routes;
 exports.register_routes = register_routes = function(app) {
-  var router = express.Router();
+  router = express.Router();
+
   var apps = app.get('apps');
   var routes_list;
   var routes_path;
@@ -40,6 +43,8 @@ exports.register_routes = register_routes = function(app) {
       throw new Error('Error loading routes of ' + appname + ':\n routes_list is not a array.');
     }
   });
-
-  app.use(router);
 };
+
+exports.get_router = function() {
+  return router;
+}

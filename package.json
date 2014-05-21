@@ -7,7 +7,10 @@
     "express": "~4.0",
     "mongoose": "~3.8",
     "underscore": "~1.6",
-    "strftime": "~0.8"
+    "strftime": "~0.8",
+    "body-parser": "~1.2",
+    "cookie-parser": "~1.1",
+    "csurf": "~1.2"
   },
   "devDependencies": {
     "grunt": "~0.4.5",
