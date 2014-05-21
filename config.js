@@ -20,3 +20,12 @@ exports.apps = [
   'auth',
   'term',
 ];
+
+// db
+exports.db_conf = {
+  'host': 'localhost',
+  'port': 27017,
+  'db': 'blog',
+  'username': 'blog',
+  'password': '1'
+};

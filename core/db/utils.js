@@ -4,8 +4,11 @@
  * Shoul only use for db Schemas
  */
 
+var fs = require('fs');
+var path = require('path');
+
 // Generate a simple String Validator for schema usage
-var generalStringValidator();
+var generalStringValidator;
 exports.generalStringValidator = generalStringValidator = function(pattern, errmsg) {
   return [
     function(s) {
@@ -22,4 +25,12 @@ exports.generalStringValidator = generalStringValidator = function(pattern, errm
 };
 
 // auto discover Schemas and load them into Mongoose
+var autoDiscoverSchemas;
+exports.autoDiscoverSchemas = autoDiscoverSchemas = function() {
+  var schema_dir = path.join(__dirname, './schemas/');
 
+  fs.readdirSync(schema_dir).forEach(function(schname) {
+    // Load the schema file
+    require(path.join(schema_dir, schname));
+  });
+};
