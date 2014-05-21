@@ -19,7 +19,7 @@ global.app = app;
  * the only argument. 
 */
 exports.run = function() {
-  var boot_seq = require('./boot.d/boot_seq.json');
+  var boot_seq = require('./boot.d/boot-seq.json');
 
   // Load up boot items
   // After this, the server start running

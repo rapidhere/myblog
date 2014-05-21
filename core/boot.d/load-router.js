@@ -3,9 +3,9 @@
  */
 
 exports.boot = function(app) {
-  var register_routes = require('../router.js').register_routes;
+  var registerRoutes = require('../router.js').registerRoutes;
 
-  register_routes(app);
+  registerRoutes(app);
 
   return true;
 };

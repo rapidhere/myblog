@@ -1,0 +1,8 @@
+[
+  "load-config",
+  "load-logger",
+  "load-router",
+  "load-db",
+  "load-middleware",
+  "start-server"
+]

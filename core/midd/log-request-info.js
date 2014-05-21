@@ -2,10 +2,10 @@
  * Log up request information when requests come
  */
 
-var logger = require('../logger.js').get_logger();
+var logger = require('../logger.js').getLogger();
 
-var log_request_info = function(req, res, next) {
-  logger.log_info(req.ip,
+var logRequestInfo = function(req, res, next) {
+  logger.logInfo(req.ip,
     'Request coming:\n' +
     '  url: ' + req.originalUrl + ' \n' +
     '  host: ' + req.host + ' \n' +
@@ -16,5 +16,5 @@ var log_request_info = function(req, res, next) {
 };
 
 module.exports = function() {
-  return log_request_info;
+  return logRequestInfo;
 };

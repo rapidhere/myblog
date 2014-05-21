@@ -5,9 +5,9 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
-var log_request_info = require('../midd/log_request_info.js');
-var get_router = require('../router.js').get_router;
-var the404handler = require('../midd/the404handler.js');
+var logRequestInfo = require('../midd/log-request-info.js');
+var getRouter = require('../router.js').getRouter;
+var the404Handler = require('../midd/the-404-handler.js');
 
 
 exports.boot = function(app) {
@@ -21,13 +21,15 @@ exports.boot = function(app) {
   app.use(app.get('static_url'), express.static(app.get('static_root')));
 
   // A simple enter log
-  app.use(log_request_info());
+  app.use(logRequestInfo());
 
   // load up router
-  app.use(get_router());
+  app.use(getRouter());
 
   // handle 404
-  app.use(the404handler());
+  app.use(the404Handler());
+
+  // handle 500
 
   return true;
 };

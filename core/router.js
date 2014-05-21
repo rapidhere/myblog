@@ -8,8 +8,8 @@ var isArray = require('util').isArray;
 
 var router;
 
-var register_routes;
-exports.register_routes = register_routes = function(app) {
+var registerRoutes;
+exports.registerRoutes = registerRoutes = function(app) {
   router = express.Router();
 
   var apps = app.get('apps');
@@ -45,6 +45,6 @@ exports.register_routes = register_routes = function(app) {
   });
 };
 
-exports.get_router = function() {
+exports.getRouter = function() {
   return router;
 }

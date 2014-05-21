@@ -1,5 +1,5 @@
 exports.boot = function(app) {
-  require('../logger.js').load_logger(
+  require('../logger.js').loadLogger(
     app.get('log_dir'),
     app.get('log_time_format')
   );

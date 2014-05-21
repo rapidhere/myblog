@@ -31,5 +31,10 @@ exports.boot = function(app) {
   // The time format used by logger
   app.set('log_time_format', config.log_time_format || '%Y %m %d, %H:%M:%S');
 
+  // set up jade app engine
+  app.engine('jade', require('jade').__express);
+  app.set('view engine', 'jade');
+  app.set('views', path.join(__dirname, '../../template/'));
+
   return true;
 };

@@ -4,10 +4,10 @@
  * The start the server
  */
 
-var logger = require('../logger.js').get_logger();
+var logger = require('../logger.js').getLogger();
 
 exports.boot = function(app) {
-  logger.log_info('N/A', 'Server started ...');
+  logger.logInfo('N/A', 'Server started ...');
 
   app.listen(app.get('port'));
 

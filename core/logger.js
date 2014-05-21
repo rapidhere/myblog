@@ -30,8 +30,8 @@ Logger.prototype.LOG_LV_ERROR = 2;
 Logger.prototype.LOG_LV_DEBUG = 3;
 
 // low level log function
-var append_log;
-Logger.prototype.append_log = append_log = function(level, client, txt) {
+var appendLog;
+Logger.prototype.appendLog = appendLog = function(level, client, txt) {
   var log_txt;
   
   // get current pid
@@ -57,24 +57,24 @@ Logger.prototype.append_log = append_log = function(level, client, txt) {
   this.log_file.write(log_txt);
 };
 
-Logger.prototype.log_info     = _.partial(append_log, Logger.prototype.LOG_LV_INFO);
-Logger.prototype.log_warning  = _.partial(append_log, Logger.prototype.LOG_LV_WARN);
-Logger.prototype.log_error    = _.partial(append_log, Logger.prototype.LOG_LV_ERROR);
-Logger.prototype.log_debug    = _.partial(append_log, Logger.prototype.LOG_LV_DEBUG);
+Logger.prototype.logInfo     = _.partial(appendLog, Logger.prototype.LOG_LV_INFO);
+Logger.prototype.logWarning  = _.partial(appendLog, Logger.prototype.LOG_LV_WARN);
+Logger.prototype.logError    = _.partial(appendLog, Logger.prototype.LOG_LV_ERROR);
+Logger.prototype.logDebug    = _.partial(appendLog, Logger.prototype.LOG_LV_DEBUG);
 
 // Global single logger
-var theLogger = null;
+var the_logger = null;
 
 // Load the logger on start
-var load_logger = function(log_dir, log_time_format) {
-  theLogger = new Logger(log_dir, log_time_format);
+var loadLogger = function(log_dir, log_time_format) {
+  the_logger = new Logger(log_dir, log_time_format);
 };
 
 // Logger can only load once
-exports.load_logger = _.once(load_logger);
+exports.loadLogger = _.once(loadLogger);
 
 // Get the logger
-var get_logger;
-exports.get_logger = function() {
-  return theLogger;
+var getLogger;
+exports.getLogger = function() {
+  return the_logger;
 };
