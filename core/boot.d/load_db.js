@@ -16,9 +16,8 @@ exports.boot = function(app) {
 
   mongoose.connect(uri);
   
-  var db = mongoose.connection;
-  db.on('error', console.error.bind(console, 'Connection to db error: '));
-
   // Discover schemas
   require('../db/utils.js').autoDiscoverSchemas();
+
+  return true;
 };

@@ -6,4 +6,6 @@
 
 exports.boot = function(app) {
   app.listen(app.get('port'));
+
+  return true;
 };

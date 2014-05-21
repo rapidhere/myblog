@@ -24,4 +24,6 @@ exports.boot = function(app) {
 
   // db_conf
   app.set('db_conf', config.db_conf || {});
+
+  return true;
 };

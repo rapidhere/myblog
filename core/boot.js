@@ -26,6 +26,14 @@ exports.run = function() {
   boot_seq.forEach(function(boot_filename) {
     var bitem = require('./boot.d/' + boot_filename + '.js');
 
-    bitem.boot(app);
+    try {
+      if(! bitem.boot(app)) {
+        console.error('Failed to run boot item: ' + boot_filename + ', aborted!');
+        process.exit(1);
+      }
+    } catch(err) {
+      console.error('uncaughtException when run boot item: ' + boot_filename);
+      throw err;
+    }
   });
 }
