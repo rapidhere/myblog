@@ -5,7 +5,9 @@
   "private": true,
   "dependencies": {
     "express": "~4.0",
-    "mongoose": "~3.8"
+    "mongoose": "~3.8",
+    "underscore": "~1.6",
+    "strftime": "~0.8"
   },
   "devDependencies": {
     "grunt": "~0.4.5",

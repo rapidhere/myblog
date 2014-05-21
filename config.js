@@ -10,7 +10,7 @@ exports.port = 8080;
 exports.debug = true;
 
 // the root path of static files
-exports.static_root = path.join(__dirname, 'static')
+exports.static_root = path.join(__dirname, 'static');
 
 // the static root url
 exports.static_url = '/static';
@@ -29,3 +29,6 @@ exports.db_conf = {
   'username': 'blog',
   'password': '1'
 };
+
+// The directory for logs
+exports.log_dir = path.join(__dirname, 'log');
