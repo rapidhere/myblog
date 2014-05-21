@@ -17,6 +17,7 @@ exports.static_url = '/static';
 
 // availabe apps
 exports.apps = [
+  'blog',
   'auth',
   'term',
 ];

@@ -10,7 +10,8 @@
     "strftime": "~0.8",
     "body-parser": "~1.2",
     "cookie-parser": "~1.1",
-    "csurf": "~1.2"
+    "csurf": "~1.2",
+    "jade": "~1.3"
   },
   "devDependencies": {
     "grunt": "~0.4.5",
