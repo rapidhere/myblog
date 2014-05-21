@@ -32,3 +32,6 @@ exports.db_conf = {
 
 // The directory for logs
 exports.log_dir = path.join(__dirname, 'log');
+
+// The time format used by logger
+exports.log_time_format = '%H:%M:%S %d, %b %Y';

@@ -2,13 +2,25 @@
  * This is a Logger system
  */
 
+//TODO:: Add flock
+
 var _ = require('underscore');
 var strftime = require('strftime');
+var path = require('path');
+var fs = require('fs');
 
 var Logger;
 exports.Logger = Logger = function(log_dir, log_time_format) {
   this.log_dir = log_dir;
   this.log_time_format = log_time_format;
+  
+  // Create log file
+  var log_filename = path.join(log_dir, 'blog.log');
+  var opt = {
+    'flags': 'a',
+  };
+  
+  this.log_file = fs.createWriteStream(log_filename, opt);
 };
 
 // Statics: Log levels
@@ -26,13 +38,29 @@ Logger.prototype.append_log = append_log = function(level, client, txt) {
   var pid = process.pid;
 
   // get current time
-  var time_string = strftime(log_time_format);
+  var time_string = strftime(this.log_time_format);
+
+  // get Level string
+  var level_string;
+  switch(level) {
+    case Logger.LOG_LV_INFO: level_string = 'II'; break;
+    case Logger.LOG_LV_WARN: level_string = 'WW'; break;
+    case Logger.LOG_LV_ERROR: level_string = 'EE'; break;
+    case Logger.LOG_LV_DEBUG: level_string = 'DD'; break;
+  }
+
+  log_txt = level_string + '  [' + time_string + '] ' + 
+    'FROM ' + client + ' >>>\n' +
+    txt + "\n\n";
+  
+  // Write async
+  this.log_file.write(log_txt);
 };
 
-Logger.prototype.log_info     = _.partial(append_log, LOG_LV_INFO);
-Logger.prototype.log_warning  = _.partial(append_log, LOG_LV_WARN);
-Logger.prototype.log_error    = _.partial(append_log, LOG_LV_ERROR);
-Logger.prototype.log_debug    = _.partial(append_log, LOG_LV_DEBUG);
+Logger.prototype.log_info     = _.partial(append_log, Logger.LOG_LV_INFO);
+Logger.prototype.log_warning  = _.partial(append_log, Logger.LOG_LV_WARN);
+Logger.prototype.log_error    = _.partial(append_log, Logger.LOG_LV_ERROR);
+Logger.prototype.log_debug    = _.partial(append_log, Logger.LOG_LV_DEBUG);
 
 // Global single logger
 var theLogger = null;

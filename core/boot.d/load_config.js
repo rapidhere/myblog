@@ -25,5 +25,11 @@ exports.boot = function(app) {
   // db_conf
   app.set('db_conf', config.db_conf || {});
 
+  // log_dir
+  app.set('log_dir', config.log_dir || '/var/log/');
+
+  // The time format used by logger
+  app.set('log_time_format', config.log_time_format || '%Y %m %d, %H:%M:%S');
+
   return true;
 };
