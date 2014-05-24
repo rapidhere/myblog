@@ -1,9 +1,25 @@
-!!! 5
+doctype html
 
-head
-  title
-    Hello World
+html
+  //- The header part
+  head
+    //- The title of the html
+    block Title
+      title Default Title
+    
+    //- Link the css and scripts
+    block Statics
+      //- Favicon
+      link(rel="shortcut icon", href="")
+
+      //- Meta
+      meta(name="keywords", content="Blog, Programmer, ACM, Alogrithm, RapidHere, RapiD Aint Pacer In Data")
+      meta(name="author", content="rapidhere@gmail.com")
+      meta(name="description", content="The Personal Blog for Rapid")
+      meta(http-equiv="Content-Type", "text/html; Charset=utf8")
+
+      //- Shared sources
+      link(href="#{STATIC_URL}css/layout.css", type="text/css", rel="stylesheet")
 
 body
-  div
-    Hello World
+  | Hello World
