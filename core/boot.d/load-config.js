@@ -6,6 +6,16 @@ var path = require('path');
 
 exports.boot = function(app) {
   var config = require('../../config.js');
+
+  // debug = true
+  if(config.debug === undefined) {
+    app.set('debug', true);
+  } else {
+    app.set('debug', config.debug);
+  }
+
+  // root mail
+  app.set('root_mail', config.root_mail || 'example@abc.com');
   
   // port = 80
   app.set('port', config.port || 80);

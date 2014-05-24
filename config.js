@@ -3,11 +3,14 @@
  */
 var path = require('path');
 
+// the debug flag
+exports.debug = false;
+
+// the rooter mail
+exports.root_mail = 'rapidhere@gmail.com';
+
 // The server port
 exports.port = 8080;
-
-// debug on?
-exports.debug = true;
 
 // the root path of static files
 exports.static_root = path.join(__dirname, 'static');
@@ -17,6 +20,7 @@ exports.static_url = '/static';
 
 // availabe apps
 exports.apps = [
+  'mainpage',
   'blog',
   'auth',
   'term',

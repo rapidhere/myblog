@@ -8,8 +8,8 @@ var isArray = require('util').isArray;
 
 var router;
 
-var registerRoutes;
-exports.registerRoutes = registerRoutes = function(app) {
+var loadRouter;
+exports.loadRouter = registerRoutes = function(app) {
   router = express.Router();
 
   var apps = app.get('apps');
@@ -36,13 +36,15 @@ exports.registerRoutes = registerRoutes = function(app) {
         if(typeof(fn) != 'function') {
           throw new Error('Error loading routes of ' + appname + ':\n route[1] must be a function');
         }
-
+        
         router.all(url, fn);
       });
     } else {
       throw new Error('Error loading routes of ' + appname + ':\n routes_list is not a array.');
     }
   });
+
+  app.use(router);
 };
 
 exports.getRouter = function() {

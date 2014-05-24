@@ -6,9 +6,9 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var logRequestInfo = require('../midd/log-request-info.js');
-var getRouter = require('../router.js').getRouter;
 var the404Handler = require('../midd/the-404-handler.js');
-
+var errorHandler = require('../midd/error-handler.js');
+var loadRouter = require('../router.js').loadRouter;
 
 exports.boot = function(app) {
   // Use body parser
@@ -23,13 +23,14 @@ exports.boot = function(app) {
   // A simple enter log
   app.use(logRequestInfo());
 
-  // load up router
-  app.use(getRouter());
+  // put router here
+  loadRouter(app);
 
   // handle 404
   app.use(the404Handler());
 
   // handle 500
+  app.use(errorHandler());
 
   return true;
 };
