@@ -4,7 +4,7 @@
 var path = require('path');
 
 // the debug flag
-exports.debug = false;
+exports.debug = true;
 
 // the rooter mail
 exports.root_mail = 'rapidhere@gmail.com';
