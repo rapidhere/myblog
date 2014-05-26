@@ -1,0 +1,2 @@
+/* jterm-0.1.2, jquery plugin for terminal simulator */
+.jterm-frame{padding:0;overflow:hidden;outline:0}.jterm-frame span.jterm-cursor{position:relative;font:inherit;z-index:10000}.jterm-frame div.jterm-line{margin:0;padding:0;font:inherit;display:inline-block;position:relative}.jterm-frameme span.jterm-span{margin:0;padding:0;font:inherit;display:inline}

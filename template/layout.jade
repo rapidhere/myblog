@@ -20,6 +20,9 @@ html
 
       //- Shared sources
       link(href="#{static_url}/css/layout.css", type="text/css", rel="stylesheet")
+      script(src="#{static_url}/js/jquery-2.1.1.min.js")
 
 body
-  | Hello World
+  div(class="outter container align-center")
+    block Content
+      | Hello World
