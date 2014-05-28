@@ -70,11 +70,7 @@ div.align-center {
 
 div.outter {
 	width: 960px;
-  display:block;
-
-	background-color: #dfdfdf;
-  
-  padding-bottom: 20px;
+	display:block;
 }
 
 div.container {
@@ -114,4 +110,9 @@ a:visited {
 
 a:hover {
   color: #1085d9;
+}
+
+input {
+  font-size: 16px;
+  line-height: 1.1;
 }
