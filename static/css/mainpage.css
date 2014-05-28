@@ -5,11 +5,30 @@ div.outter {
 h1 {
   color: #222;
   text-shadow: 2px 2px 3px #afafaf;
+
+  display: inline-block;
 }
 
-h6 {
-  color: #4f4f4f;
-  text-shadow: 2px 2px 3px #afafaf;
+h1 a {
+  font-size: inherit;
+  color: #222;
+}
+
+h1 a:visited {
+  color: #222;
+}
+
+h1 a:hover {
+  color: #333;
+}
+
+div#nav-item-container {
+  vertical-align: bottom;
+  text-align: left;
+}
+
+div#nav-item-container #item-container {
+  vertical-align:bottom;
 }
 
 div#all-container {
@@ -24,12 +43,12 @@ div#all-container {
 }
 
 div#painter-container {
-  margin-top: 30px;
+  margin-top: 0px;
 }
 
 div#canvas-container {
   width: 800px;
-  height: 400px;
+  height: 360px;
 
   border-color: #7f7f7f;
   border-width: 1px;

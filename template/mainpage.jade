@@ -8,11 +8,17 @@ block append Statics
   link(href="#{static_url}/css/jterm-0.1.2.min.css", rel="stylesheet", type="text/css")
   script(src="#{static_url}/js/jterm-0.1.2.jquery.min.js")
   script(src="#{static_url}/js/mainpage/canvas.js")
+  script(src="#{static_url}/js/mainpage/nav.js")
 
 block Content
   div.container#all-container
-    h1.center RapiD's Blog
-    h6.center 码农，电竞，伪摇狗
+    div.center
+      h1 RapiD's 
+        div.inline-container#nav-item-container
+          div.inline-container#item-container
+            a(id="item" href="javascript:;") BLOG
+
+        a(id="enter" href="javascript:;" target="_blank") &nbsp;&raquo;
 
     div.container.center#painter-container
       div.container.align-center#canvas-container
