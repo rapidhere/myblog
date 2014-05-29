@@ -1,9 +1,13 @@
 div#admin-main-container {
   width: 720px;
+
+  float: left;
 }
 
 div#admin-side-container {
   width: 240px;
+
+  margin-bottom: 20px;
 }
 
 div#admin-main-container table {
@@ -35,4 +39,34 @@ div#admin-main-container th.table-modify {
 
 div#admin-main-container th.table-operate {
   width: auto;
+}
+
+div.sidebar-section {
+  margin-top: 10px;
+  
+  padding-left: 14px;
+}
+
+div.sidebar-section h6 {
+  margin-bottom: 24px;
+}
+
+div.sidebar-section a {
+  color: #2f2f2f;
+}
+
+div.sidebar-section a:hover {
+  color: #5f5f5f;
+}
+
+div.sidebar-section a:visited {
+  color: #2f2f2f;
+}
+
+div#operate-list-container ul {
+  list-style: none;
+}
+
+div#operate-list-container li {
+  margin-bottom: 12px;
 }

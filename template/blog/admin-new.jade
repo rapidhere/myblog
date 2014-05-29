@@ -1,0 +1,28 @@
+extends blog-base-layout
+
+block append Statics
+  link(href="#{static_url}/css/blog/editor.css" rel="stylesheet" type="text/css")
+  script(src="#{static_url}/js/markdown.js")
+  script(src="#{static_url}/js/blog/editor.js")
+
+block Title
+  title BLOG: Post article
+
+block MainContent
+  div.container#editor-container
+    form
+      div.container.form-group#extra-info-container
+          input.form-control(placeholder="Title")
+
+        div.form-group
+          input.form-control(placeholder="Tags")
+      
+      div.container#content-container
+        div.container.form-group#markdown-container
+            textarea.form-control(placeholder="Content")
+
+        div.container#preview-container
+
+      div.container.form-group#submit-container
+        button.primary POST
+        button.default PREVIEW

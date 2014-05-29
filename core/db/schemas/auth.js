@@ -14,22 +14,13 @@ var Schema = mongoose.Schema;
 // the User Schema definition
 var UserSchema = new Schema({
   // Nick name
-  'nickname': {
-    'type': String,
-    'required': true,
-  },
+  'nickname': String,
 
   // Email
-  'email': {
-    'type': String,
-    'required': true,
-  },
+  'email': String,
 
   // Password
-  'password': {
-    'type': String,
-    'required': true,
-  },
+  'password': String,
 });
 
 // Register User Model

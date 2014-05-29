@@ -21,19 +21,19 @@ div#header-container h6 {
 }
 
 div#searchbar-container {
-  margin-left: 200px;
+  position: absolute;
+  top: 36px;
+  right: 0;
 }
 
 div#searchbar-container input{
-  position: absolute;
-
-  top: 40px;
-  right: 0;
-
+  height: 26px;
+  padding: 3px 6px;
   width: 220px;
   margin-right: 60px;
 
-  font-size: 18px;
+  border-width: 0px 0px 1px 0px;
+  background-color: inherit;
 }
 
 a#search-mark {
@@ -57,7 +57,6 @@ div#main-container {
 }
 
 div#footer-container {
-  border-top: 1px solid #ddd;
   padding: 30px;
   padding-bottom: 20px;
   padding-top: 10px;

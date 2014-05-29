@@ -1,10 +1,10 @@
-extends blog-layout
+extends blog-base-layout
 
 block Title
   title BLOG: Administrator
 
 block append Statics
-  link(href="#{static_url}/css/blog/admin.css", rel="stylesheet", type="text/css")
+  link(href="#{static_url}/css/blog/admin.css" rel="stylesheet" type="text/css")
   script(src="#{static_url}/js/blog/admin.js")
 
 block MainContent
@@ -18,4 +18,18 @@ block MainContent
         th.table-operate operate
 
   div.inline-container#admin-side-container
-    h6 Welcome Admin
+    hr
+
+    div.container.sidebar-section#operate-list-container
+      h6 Welcome Administrator
+      ul
+        li: a(href="/blog/admin/new-article" target="_blank"): i.fa.fa-pencil &nbsp;new article
+        li: a(href="javascript:;"): i.fa.fa-calendar-o &nbsp;mainpage man
+        li: a(href="javascript:;"): i.fa.fa-desktop &nbsp;statistics
+
+    hr
+
+    div.contaier.sidebar-section#tag-list-container
+      h6 Tags
+
+    hr

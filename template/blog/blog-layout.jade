@@ -1,25 +1,11 @@
-extends ../layout.jade
-
-block Title
-  title BLOG: RapiD是一个逗比
+extends blog-base-layout
 
 block append Statics
-  link(href="#{static_url}/css/blog/blog-layout.css", rel="stylesheet", type="text/css")
   script(src="#{static_url}/js/blog/searchbar.js")
 
-block Content
-  div.container#header-container
-    h1 RapiD is a JOKER
-    h6 码农，电竞，伪摇狗
-    div.inline-container#searchbar-container
-      input
+block ExtraHeader
+  div.inline-container#searchbar-container
+    input.form-control(placeholder="Search ...")
 
-    a(id="search-mark" href="javascript:;") 
-        i.fa.fa-search
-  
-  div.container#main-container
-    block MainContent
-
-  div.container#footer-container
-    p#poweredby Powered by: Node.js | Express | MongoDB
-    p#copyright Copyright&copy; RanttuInc, rapidhere@gmail.com
+  a(id="search-mark" href="javascript:;") 
+    i.fa.fa-search
