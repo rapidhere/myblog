@@ -1,0 +1,21 @@
+extends blog-layout
+
+block Title
+  title BLOG: Administrator
+
+block append Statics
+  link(href="#{static_url}/css/blog/admin.css", rel="stylesheet", type="text/css")
+  script(src="#{static_url}/js/blog/admin.js")
+
+block MainContent
+  div.inline-container#admin-main-container
+    table#list-table
+      thead
+        th.table-title title
+        th.table-tag tag
+        th.table-publish publish
+        th.table-modify modify
+        th.table-operate operate
+
+  div.inline-container#admin-side-container
+    h6 Welcome Admin
