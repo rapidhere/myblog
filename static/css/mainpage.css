@@ -4,7 +4,6 @@ div.outter {
 
 h1 {
   color: #222;
-  text-shadow: 2px 2px 3px #afafaf;
 
   display: inline-block;
 }
@@ -58,8 +57,6 @@ div#canvas-container {
   cursor: crosshair;
 
   -webkit-user-drag: none;
-
-  box-shadow: 2px 2px 3px #afafaf;
 }
 
 canvas#canvas {
@@ -69,8 +66,6 @@ canvas#canvas {
 div#canvas-term-container {
   width: 800px;
   margin-top: 20px;
-  
-  box-shadow: 2px 2px 3px #7f7f7f;
 
   margin-bottom: 5px;
 }
