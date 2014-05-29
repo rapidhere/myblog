@@ -1,0 +1,38 @@
+div#admin-main-container {
+  width: 720px;
+}
+
+div#admin-side-container {
+  width: 240px;
+}
+
+div#admin-main-container table {
+  width: 100%;
+
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+div#admin-main-container th {
+  text-align: left;
+}
+
+div#admin-main-container th.table-title {
+  width: 200px;
+}
+
+div#admin-main-container th.table-tag {
+  width: 100px;
+}
+
+div#admin-main-container th.table-publish {
+  width: 100px;
+}
+
+div#admin-main-container th.table-modify {
+  width: 100px;
+}
+
+div#admin-main-container th.table-operate {
+  width: auto;
+}

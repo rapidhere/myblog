@@ -1,8 +1,5 @@
 div.outter {
 	margin-top: 20px;
-	box-shadow: 2px 2px 3px #afafaf;
-
-	background-color: #eeeeee;
 }
 
 div#header-container h1, h6 {
@@ -53,6 +50,10 @@ a#search-mark {
 
 a#search-mark:hover {
   color: #9faf9f;
+}
+
+div#main-container {
+  margin-top: 20px;
 }
 
 div#footer-container {
