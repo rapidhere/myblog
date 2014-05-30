@@ -119,7 +119,7 @@ FilterUnit.prototype.cleanUp = function(data) {
   
   // Call custom filter
   if(this.ctrl.filter)
-    return this.ctrl.filter();
+    return this.ctrl.filter(d);
   else {
     return {
       'ret': d,
