@@ -4,5 +4,5 @@
   "load-db",
   "load-filter",
   "load-middleware",
-  "start-server",
+  "start-server"
 ]
