@@ -2,6 +2,7 @@
   "load-config",
   "load-logger",
   "load-db",
+  "load-filter",
   "load-middleware",
   "start-server"
 ]
