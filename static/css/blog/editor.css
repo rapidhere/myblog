@@ -2,3 +2,12 @@ div#editor-container {
   padding-left: 30px;
   padding-right: 30px;
 }
+
+div#preview-container {
+	min-height: 400px;
+	margin-bottom: 15px;
+}
+
+button {
+	margin-right: 5px;
+}

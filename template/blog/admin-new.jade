@@ -10,19 +10,19 @@ block Title
 
 block MainContent
   div.container#editor-container
-    form
+    form(method="POST" action="blog/admin/post-new-article")
       div.container.form-group#extra-info-container
-          input.form-control(placeholder="Title")
+          input(name="title").form-control(placeholder="Title")
 
         div.form-group
-          input.form-control(placeholder="Tags")
+          input(name="tags").form-control(placeholder="Tags")
       
       div.container#content-container
         div.container.form-group#markdown-container
-            textarea.form-control(placeholder="Content")
+          textarea(name="content").form-control(placeholder="Content" tabindex="-1")
 
         div.container#preview-container
 
       div.container.form-group#submit-container
-        button.primary POST
-        button.default PREVIEW
+        button(type="submit").primary#post-button POST
+        button.default#preview-button PREVIEW
