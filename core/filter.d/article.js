@@ -16,10 +16,17 @@ var ArticleFilter = new Filter({
   // The tags
   'tags': {
     'type': String,
-    'required': false,
+    'required': true,
     'max': 255,
     'filter': function(tags) {
     },
+  },
+
+  // The content
+  'content': {
+    'type': String,
+    'required': true,
+    'max': 65535,
   },
 });
 

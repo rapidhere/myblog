@@ -5,4 +5,4 @@ TOOD LIST
 Currently we have no flock on log system, so we can't fork server instances.
 
 2014-05-30 Issues:
-BUG:: Can't enter blog on first click
+BUG: Can't enter blog on first click
