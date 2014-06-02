@@ -31,7 +31,7 @@ var ArticleSchema = new Schema({
   'title': String,
 
   // The Relative Tags
-  'tags': [TagSchema],
+  'tags': [{ 'type': Schema.Types.ObjectId, ref: 'Tag'}],
 
   // Publish date
   'pub_date': Date,

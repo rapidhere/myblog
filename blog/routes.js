@@ -5,4 +5,5 @@ module.exports = [
   ['/blog/index', ctrl.index],
   ['/blog/admin', ctrl.adminMainPage],
   ['/blog/admin/new-article', ctrl.adminNewArticle],
+  ['/blog/admin/post-new-article', ctrl.postNewArticle],
 ];

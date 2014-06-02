@@ -25,8 +25,8 @@ exports.getTagOrCreate = function(tag_name, callback) {
     // Too many tags
     // For this situations we log a debug error
     // And then ignore this
-    if(tags.length !== 1) {
-      logger.log_debug('N/A', 'Multiple tag has a tag_name: ' + tag_name);
+    if(tags.length > 1 ) {
+      logger.logDebug('N/A', 'Multiple tag has a tag_name: ' + tag_name);
     }
 
     // No such tag, we create one
