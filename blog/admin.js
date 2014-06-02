@@ -55,7 +55,7 @@ exports.postNewArticle = function(req, res) {
     art.title = fr.rets.title;
     art.tags = tags;
     art.content = fr.rets.content;
-    art.pub_date = undefined;
+    art.pub_date = Date.now();
     art.modify_date = Date.now();
 
     // Save and handle errors
