@@ -1,0 +1,83 @@
+div.outter {
+  background-color: inherit;
+}
+
+h1 {
+  color: #222;
+  text-shadow: 2px 2px 3px #afafaf;
+
+  display: inline-block;
+}
+
+h1 a {
+  font-size: inherit;
+  color: #222;
+}
+
+h1 a:visited {
+  color: #222;
+}
+
+h1 a:hover {
+  color: #333;
+}
+
+div#nav-item-container {
+  vertical-align: bottom;
+  text-align: left;
+}
+
+div#nav-item-container #item-container {
+  vertical-align:bottom;
+}
+
+div#all-container {
+  position:absolute;
+  height: 660px;
+  width: 960px;
+  
+  left: 50%;
+  top: 50%;
+  margin-top: -330px;
+  margin-left: -480px;
+}
+
+div#painter-container {
+  margin-top: 0px;
+}
+
+div#canvas-container {
+  width: 800px;
+  height: 360px;
+
+  border-color: #7f7f7f;
+  border-width: 1px;
+  border-style: solid;
+
+  background-color: #ffffff;
+  cursor: crosshair;
+
+  -webkit-user-drag: none;
+
+  box-shadow: 2px 2px 3px #afafaf;
+}
+
+canvas#canvas {
+  -webkit-user-drag: none;
+}
+
+div#canvas-term-container {
+  width: 800px;
+  margin-top: 20px;
+  
+  box-shadow: 2px 2px 3px #7f7f7f;
+
+  margin-bottom: 5px;
+}
+
+div#Term {
+  width: 800px;
+  height: 120px;
+
+  text-align: left;
+}

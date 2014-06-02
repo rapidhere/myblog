@@ -1,0 +1,117 @@
+* {
+	padding: 0px;
+	margin: 0px;
+}
+
+body {
+	font-family: "Lucida Grande",Helvetica,Arial,"Hiragino Sans GB","Hiragino Sans GB W3","WenQuanYi Micro Hei",sans-serif;
+	font-size: 14px;
+	color: #2f2f2f;
+	line-height: 1.1;
+
+	background-color: #efefef;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+  display: block;
+}
+
+h1 {
+  font-size: 36px;
+
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 32px;
+
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+h3 {
+  font-size: 28px;
+
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+h4 {
+  font-size: 24px;
+
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+h5 {
+  font-size: 20px;
+
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+h6 {
+  font-size: 16px;
+
+  margin-top: 3px;
+  margin-bottom: 5px;
+}
+
+.center {
+  text-align: center;
+}
+
+div.align-center {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+div.outter {
+	width: 960px;
+  display:block;
+
+	background-color: #dfdfdf;
+  
+  padding-bottom: 20px;
+}
+
+div.container {
+	display: block;
+	clear: both;
+	overflow: hidden;
+}
+
+div.inline-container {
+  display: inline-block;
+  clear: both;
+  overflow: hidden;
+}
+
+ul.horizontal {
+  list-style: none;
+  clear: both;
+  overflow: hidden;
+}
+
+ul.horizontal li {
+  display: inline-block;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+a {
+  color: #0075c9;
+
+  text-decoration: none;
+  font-size: 14px;
+}
+
+a:visited {
+  color: #0075c9;
+}
+
+a:hover {
+  color: #1085d9;
+}
