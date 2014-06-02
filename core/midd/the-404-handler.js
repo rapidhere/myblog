@@ -3,12 +3,13 @@
  */
 
 var logger = require('../logger.js').getLogger();
+var render = require('../utils/template.js').render;
 
 var the404Handler = function(req, res, next) {
   logger.logWarning(req.ip, 'Unknown request: '  + req.path);
 
   res.status(404);
-  res.type('txt').send('Unknown path: ' + req.path);
+  render(res, '404page');
 
   return;
 };
