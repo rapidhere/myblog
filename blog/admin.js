@@ -29,8 +29,6 @@ exports.postNewArticle = function(req, res) {
     'content': req.param('content'),
   });
 
-  console.log(fr);
-
   if(fr.errs) {
     // TODO: add error render module
   }
