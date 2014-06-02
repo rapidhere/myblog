@@ -13,11 +13,14 @@ exports.handleRuntimeError = handleRuntimeError = function(err, req, res, next) 
   logger.logError(req.ip, 'Error Occurred:\n' + err.stack);
 
   res.status(500);
-
-  if(app.get('debug')) {
-    res.send('Server Error:\n' + err.stack);
-  } else {
-    res.send('Internal Server Error, please contact ' + app.get('root_mail'));
+  
+  if(next) {
+    // Under middleware env
+    if(app.get('debug')) {
+      res.send('Server Error:\n' + err.stack);
+    } else {
+      res.send('Internal Server Error, please contact ' + app.get('root_mail'));
+    }
   }
 
   if(app.get('debug')) {
