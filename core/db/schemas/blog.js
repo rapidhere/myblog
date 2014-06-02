@@ -34,7 +34,10 @@ var ArticleSchema = new Schema({
   'tags': [{ 'type': Schema.Types.ObjectId, ref: 'Tag'}],
 
   // Publish date
-  'pub_date': Date,
+  'pub_date': {
+    'type': Date,
+    'required': true,
+  },
 
   // Modify date
   'modify_date': Date,

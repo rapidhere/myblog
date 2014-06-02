@@ -6,6 +6,7 @@ var mongoose = require('mongoose');
 var ArticleFilter = require('./filter.js').ArticleFilter;
 var getTagOrCreate = require('./utils.js').getTagOrCreate;
 var EventProxy = require('eventproxy');
+var ehandler = require('../core/utils/sys.js').ehandler;
 var _ = require('underscore');
 
 exports.adminMainPage = function(req, res) {
@@ -56,11 +57,11 @@ exports.postNewArticle = function(req, res) {
     art.title = fr.rets.title;
     art.tags = tags;
     art.content = fr.rets.content;
-    art.pub_date = Date.now();
+    art.pub_date = undefined;
     art.modify_date = Date.now();
 
-    // TODO: handle save erros
-    art.save();
+    // Save and handle errors
+    art.save(ehandler(req, res));
     
     // Save success or not, we return to index immediatly
     res.redirect('/blog');
