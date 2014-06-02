@@ -174,5 +174,8 @@ Filter.prototype.clean = function(data) {
     rets[key] = cret.ret;
   });
 
-  return [errs, rets];
+  return {
+    'errs': errs, 
+    'rets': rets
+  };
 };
