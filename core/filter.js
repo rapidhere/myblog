@@ -34,7 +34,7 @@ FilterUnit.prototype.cleanUp = function(data) {
   var d = data[this.key];
 
   // Check required
-  if(this.ctrl['required'] && d === undefined) {
+  if(this.ctrl.required && d === undefined) {
     return {
       'ret': null,
       'err': this.key + ' , This field is required!',
@@ -43,11 +43,11 @@ FilterUnit.prototype.cleanUp = function(data) {
     return {
       'ret': null,
       'err':'',
-    }
+    };
   }
 
   // Check type
-  var t = this.ctrl['type'];
+  var t = this.ctrl.type;
   if(t === String) {
     if(! _.isString(d)) {
       return {
@@ -124,7 +124,7 @@ FilterUnit.prototype.cleanUp = function(data) {
     return {
       'ret': d,
       'err': '',
-    }
+    };
   }
 };
 
@@ -170,9 +170,17 @@ Filter.prototype.clean = function(data) {
 
   _.each(this.filters, function(fu, key) {
     var cret = fu.cleanUp(data);
-    errs[key] = cret.err;
+
+    if(cret.err) {
+      errs[key] = cret.err;
+    }
+
     rets[key] = cret.ret;
   });
+
+  if(_.size(errs) === 0) {
+    errs = null;
+  }
 
   return {
     'errs': errs, 
