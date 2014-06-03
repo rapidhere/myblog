@@ -40,3 +40,6 @@ exports.log_dir = path.join(__dirname, 'log');
 
 // The time format used by logger
 exports.log_time_format = '%H:%M:%S %d, %b %Y';
+
+// Article per page
+exports.article_per_page = 5

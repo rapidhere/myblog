@@ -1,1 +1,12 @@
 extends blog-layout
+
+block append Statics
+  script(src="#{static_url}/js/index.js")
+
+block MainContent 
+  each art in articles
+    h6= art.title
+    div= art.content
+    div= art.tags
+    p= art.pub_date
+    p= art.modify_date

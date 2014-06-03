@@ -8,4 +8,4 @@ Currently we have no flock on log system, so we can't fork server instances.
 BUG: Can't enter blog on first click
 
 2014-06-02 Issues:
-Add error render module
+Add error render module [DONE]

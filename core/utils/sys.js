@@ -4,31 +4,28 @@
 var logger = require('../logger.js').getLogger();
 var app = global.app;
 var _ = require('underscore');
+var renderError = require('./template.js').renderError;
 
 // The standard Runtime Error Handler
 // The Runtime Error specify the error unhandled or crtical in runtime
 var handleRuntimeError;
-exports.handleRuntimeError = handleRuntimeError = function(err, req, res, next) {
+exports.handleRuntimeError = handleRuntimeError = function(err, req, res, next, resp_flag) {
   // Log error
   logger.logError(req.ip, 'Error Occurred:\n' + err.stack);
 
   res.status(500);
   
-  if(next) {
-    // Under middleware env
+  if(resp_flag === undefined || resp_flag) {
+    // Need response
     if(app.get('debug')) {
       res.send('Server Error:\n' + err.stack);
     } else {
-      res.send('Internal Server Error, please contact ' + app.get('root_mail'));
+      renderError(res, '<p>' + '<strong>Internal Server Error</strong>: please contact ' + app.get('root_mail') + '</p>');
     }
   }
 
   if(app.get('debug')) {
-    if(next) {
-      next(err.stack);
-    } else {
-      console.log(err.stack);
-    }
+    console.log(err.stack);
   }
 };
 
@@ -36,10 +33,10 @@ exports.handleRuntimeError = handleRuntimeError = function(err, req, res, next) 
 // Ehandler is a partial of standard runtime error handler
 // It was designed to use in async cb
 var ehandler;
-exports.ehandler = ehandler = function(req, res) {
+exports.ehandler = ehandler = function(req, res, resp_flag) {
   return function(err) {
     if(err) {
-      handleRuntimeError(err, req, res, undefined);
+      handleRuntimeError(err, req, res, undefined, resp_flag);
     }
-  }
+  };
 };

@@ -5,6 +5,7 @@
 var _ = require('underscore');
 var mongoose = require('mongoose');
 var logger = require('../core/logger.js').getLogger();
+var markdown = require('markdown').markdown;
 
 // Get a tag by tagname, if such tag doesn't exist, create a new one
 var getTagOrCreate;
@@ -41,4 +42,10 @@ exports.getTagOrCreate = function(tag_name, callback) {
       callback(err, tags[0]);
     }
   });
+};
+
+// Compile markdown into html to present
+var compileMarkdown;
+exports.compileMarkdown = compileMarkdown = function(md) {
+  return markdown.toHTML(md);
 };

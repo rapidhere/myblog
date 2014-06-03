@@ -66,7 +66,8 @@ exports.postNewArticle = function(req, res) {
     art.modify_date = Date.now();
 
     // Save and handle errors
-    art.save(ehandler(req, res));
+    // Don't response
+    art.save(ehandler(req, res, false));
     
     // Save success or not, we return to index immediatly
     res.redirect('/blog');

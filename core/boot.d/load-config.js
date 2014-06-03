@@ -46,5 +46,8 @@ exports.boot = function(app) {
   app.set('view engine', 'jade');
   app.set('views', path.join(__dirname, '../../template/'));
 
+  // load blog page settings
+  app.set('article_per_page', config.article_per_page || 5);
+
   return true;
 };
