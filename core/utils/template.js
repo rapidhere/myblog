@@ -32,3 +32,15 @@ exports.render = render = function(res, template, locals) {
   // do final render
   res.render(template, locals);
 };
+
+// Shortcuts for render 404page
+var render404;
+exports.render404 = render404 = function(res) {
+  return render(res, '404page');
+};
+
+// Shortcuts for render error page
+var renderError;
+exports.renderError = renderError = function(res, error_message) {
+  return render(res, 'error', {'error_message': error_message});
+};

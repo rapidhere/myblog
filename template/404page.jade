@@ -1,0 +1,25 @@
+extends layout
+
+block Title
+  title xD 404 NOT FOUND
+block append Statics
+  style.
+    body {
+      background-color: #010101;
+    }
+
+    div.outter {
+      background-color: #040404;
+      padding: 3px;
+    }
+
+    div#img-container {
+      margin-top: 80px;
+      background-image: url(/static/img/404.jpg);
+      background-position: -2px -2px;
+      height: 453px;
+      overflow: hidden;
+    }
+
+block Content
+  div#img-container
