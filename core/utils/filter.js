@@ -16,6 +16,5 @@ exports.renderFilterError = renderFilterError = function(res, err) {
   var inf = err[key];
   
   return renderError(res,
-    '<p>Form error:</p>' + 
-    '<p>' + key + ': ' + inf + '</p>');
+    '<p><strong>Form error:</strong> ' + inf + '</p>');
 };

@@ -28,6 +28,7 @@ var ArticleFilter = new Filter({
     'type': String,
     'min': 6,
     'max': 255,
+    'null': false,
     'required': true,
   },
 
@@ -35,12 +36,14 @@ var ArticleFilter = new Filter({
     'type': String,
     'max': 255,
     'required': true,
+    'null': true,
     'filter': tagsFilter,
   },
 
   'content': {
     'type': String,
     'max': 65536,
+    'null': true,
     'required': true,
   },
 });

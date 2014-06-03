@@ -18,15 +18,16 @@ block append Statics
       margin-right: auto;
 
       background-color: white;
-      padding: 40px 50px;
+      padding: 30px 40px;
       box-shadow: 2px 2px 3px #afafaf;
     }
 
     div#error-message-container p {
-      font-size: 16px;
+      font-size: 14px;
+      line-height: 1.5em;
+      font-family: "Open Sans", sans-serif;
     }
 
 block Content
   div.container#error-message-container
-      = error_message
-
+      != error_message

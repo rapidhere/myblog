@@ -1,7 +1,12 @@
 /**
  * Admin module for blog
  */
-var render = require('../core/utils/template.js').render;
+var templateUtils = require('../core/utils/template.js');
+var render = templateUtils.render;
+var render404 = templateUtils.render404;
+var renderError = templateUtils.renderError;
+var renderFilterError = require('../core/utils/filter.js').renderFilterError;
+
 var mongoose = require('mongoose');
 var ArticleFilter = require('./filter.js').ArticleFilter;
 var getTagOrCreate = require('./utils.js').getTagOrCreate;
@@ -19,7 +24,8 @@ exports.adminNewArticle = function(req, res) {
 
 exports.postNewArticle = function(req, res) {
   if(req.method !== 'POST') {
-    // TODO: add error render module
+    render404(res);
+    return;
   }
 
   // Clean up
@@ -30,7 +36,8 @@ exports.postNewArticle = function(req, res) {
   });
 
   if(fr.errs) {
-    // TODO: add error render module
+    renderFilterError(res, fr.errs);
+    return;
   }
 
   // Get model

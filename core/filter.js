@@ -12,6 +12,7 @@ var _ = require('underscore');
  *  max:
  *  min:
  *  required:
+ *  null:
  *  filter:
  * }
  */
@@ -115,6 +116,18 @@ FilterUnit.prototype.cleanUp = function(data) {
         'err': this.key + ', this field is to small!',
       };
     }
+  }
+
+  // Check null
+  if(! this.ctrl.null) {
+    if(this.ctrl.type === String && d.length === 0) {
+      return {
+        'ret': null,
+        'err': this.key + ', this field cannot be empty!',
+      };
+    }
+
+    // No affect on Number
   }
   
   // Call custom filter
