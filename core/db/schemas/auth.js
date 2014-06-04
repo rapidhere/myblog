@@ -21,6 +21,9 @@ var UserSchema = new Schema({
 
   // Password
   'password': String,
+
+  // Relative Cookie id
+  'cookie_id': String,
 });
 
 // Register User Model

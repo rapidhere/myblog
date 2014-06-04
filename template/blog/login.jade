@@ -1,0 +1,22 @@
+extends blog-base-layout
+
+block append Statics
+  style.
+    div#form-container {
+      padding: 24px 50px;
+      width: 500px;
+      margin-bottom: 24px;
+    }
+
+block MainContent
+  div.align-center#form-container
+    h5 Login as Administrator
+    form(method="POST" action="/auth/login")
+      div.form-group
+        input(name="email" placeholder="Email" class="form-control")
+
+      div.form-group
+        input(type="password" name="password" placeholder="Password" class="form-control")
+
+      div.form-group
+        button.primary(type="submit") Login
