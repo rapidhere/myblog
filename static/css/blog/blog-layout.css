@@ -2,6 +2,56 @@ div.outter {
 	margin-top: 20px;
 }
 
+div.article-container {
+  padding: 0px 30px;
+  margin-bottom: 48px;
+}
+
+div.article-container h2.article-title>a {
+  font-family: serif;
+  color: #343e5f;
+  font-size: 32px;
+}
+
+div.article-container h2.article-title>a:hover {
+  color: #0075c9;
+}
+
+div.article-container h2.article-title>a:visited {
+  color: #343e5f;
+}
+
+div.article-container .article-tags {
+  display: inline-block;
+  margin-left: 14px;
+  color: #3f3f3f;
+}
+
+div.article-container .article-date {
+  display: inline-block;
+  color: #3f3f3f;
+}
+
+div.article-container .article-content {
+  margin-top: 24px;
+}
+
+div.article-container .article-footer {
+  margin-top: 24px;
+}
+
+.article-footer a {
+  color: #343e5f;
+}
+
+.article-footer a:hover {
+  color: #1085d9;
+}
+
+.article-footer a:visited {
+  color: #343e5f;
+}
+
 div#header-container h1, h6 {
   display: inline-block;
 
@@ -14,6 +64,7 @@ div#header-container {
   padding-left: 30px;
 
   position: relative;
+  margin-bottom: 48px;
 }
 
 div#header-container h6 {
@@ -53,7 +104,6 @@ a#search-mark:hover {
 }
 
 div#main-container {
-  margin-top: 20px;
 }
 
 div#footer-container {

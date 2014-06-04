@@ -25,7 +25,7 @@ exports.index = function(req, res) {
   // Fetch
   Article
   .find()
-  .sort('-publish')
+  .sort('-pub_date')
   .skip((page - 1) * article_per_page)
   .limit(article_per_page)
   .populate('tags', 'tag_name')

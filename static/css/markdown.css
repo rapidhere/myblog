@@ -1,0 +1,85 @@
+div.markdown {
+	margin: 0px;
+	padding: 0px;
+}
+
+div.markdown p {
+	font-size: 14px;
+	line-height: 1.5;
+}
+
+div.markdown ul, ol {
+	list-style-position: inside;
+	padding-left: 14px;
+	padding-top: 14px;
+	padding-bottom: 14px;
+	font-size: 14px;
+}
+
+div.markdown li {
+	margin-bottom: 10px;
+}
+
+div.markdown p>code {
+	font-size: 14px;
+	padding-left: 5px;
+	padding-right: 5px;
+	border: 1px solid #afafaf;
+	border-radius: 4px;
+}
+
+div.markdown pre {
+	margin: 10px 14px;
+	padding: 10px;
+	border: 1px solid #afafaf;
+	border-radius: 4px;
+	background-color: #efefef;
+}
+
+div.markdown pre>code {
+	font-family: "Consolas", monospace;
+	font-size: 14px;
+}
+
+div.markdown h1, div.markdown h2, div.markdown h3, div.markdown h4, div.markdown h5, div.markdown h6 {
+	color: #2f2f2f;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	font-weight: bold;
+}
+
+div.markdown h1 {
+	font-size: 32px;
+}
+
+div.markdown h2 {
+	font-size: 28px;
+}
+
+div.markdown h3 {
+	font-size: 24px;
+}
+
+div.markdown h4 {
+	font-size: 20px;
+}
+
+div.markdown h5 {
+	font-size: 18px;
+}
+
+div.markdown h6 {
+	font-size: 16px;
+}
+
+div.markdown a {
+	color: #1c80a0;
+}
+
+div.markdown a:hover {
+	color: #1085d9;
+}
+
+div.markdown a:visited {
+	color: #1c80a0;
+}

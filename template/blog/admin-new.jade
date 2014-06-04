@@ -2,6 +2,7 @@ extends blog-base-layout
 
 block append Statics
   link(href="#{static_url}/css/blog/editor.css" rel="stylesheet" type="text/css")
+  link(href="#{static_url}/css/markdown.css" rel="stylesheet" type="text/css")
   script(src="#{static_url}/js/markdown.js")
   script(src="#{static_url}/js/blog/editor.js")
 
@@ -21,7 +22,7 @@ block MainContent
         div.container.form-group#markdown-container
           textarea.form-control(name="content" placeholder="Content" tabindex="-1")
 
-        div.container#preview-container
+        div.container.markdown#preview-container
 
       div.container.form-group#submit-container
         button(type="submit").primary#post-button POST

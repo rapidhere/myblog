@@ -1,12 +1,19 @@
 extends blog-layout
 
 block append Statics
-  script(src="#{static_url}/js/index.js")
+  script(src="#{static_url}/js/blog/index.js")
+  link(href="#{static_url}/css/markdown.css" rel="stylesheet" type="text/css")
 
 block MainContent 
   each art in articles
-    h6= art.title
-    div= art.content
-    div= art.tags
-    p= art.pub_date
-    p= art.modify_date
+    div.container.article-container
+      h2.article-title: a(href="javascript:;")= art.title
+      p.article-date= art.pub_date
+      div.article-tags
+        i.fa.fa-tags &nbsp;
+        = art.tags
+      div.markdown.article-content!= art.content
+
+      div.article-footer
+        a(href="javascript:;") Read More &nbsp;
+          i.fa.fa-toggle-right
