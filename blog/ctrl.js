@@ -7,7 +7,7 @@ var ehandler = require('../core/utils/sys.js').ehandler;
 var compileMarkdown = require('./utils.js').compileMarkdown;
 
 // The blog mainpage
-exports.index = function(req, res) {
+exports.index = function(req, res, next) {
   // Get page code
   var page;
   if(! _.has(req.params, 'page')) {
@@ -32,7 +32,7 @@ exports.index = function(req, res) {
   .exec(function(err, _arts) {
     if(err) {
       // Reponse Error
-      ehandler(req, res, true)(err);
+      next(err);
       return ;
     }
 

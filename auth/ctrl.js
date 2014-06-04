@@ -4,11 +4,11 @@ var renderError = require('../core/utils/template.js').renderError;
 var render = require('../core/utils/template.js').render;
 var LoginFilter = require('./filter.js').LoginFilter;
 var mongoose = require('mongoose');
-var ehandler = require('../core/utils/sys.js').ehandler;
 var logger = require('../core/logger.js').getLogger();
 var genCookieId = require('./utils.js').genCookieId;
+var ehandler = require('../core/utils/sys.js').ehandler;
 
-exports.login = function(req, res) {
+exports.login = function(req, res, next) {
   // MUST BE POST
   if(req.method !== 'POST') {
     render404(res);
@@ -39,7 +39,7 @@ exports.login = function(req, res) {
   .exec(function(err, users) {
     // render Error
     if(err) {
-      ehandler(req, res, true)(err);
+      next(err);
       return ;
     }
 
@@ -77,7 +77,7 @@ exports.login = function(req, res) {
   });
 };
 
-exports.loginPage = function(req, res) {
+exports.loginPage = function(req, res, next) {
   // get next url
   var next_url = req.query.next_url || '/';
 
@@ -85,6 +85,16 @@ exports.loginPage = function(req, res) {
   render(res, 'blog/login', {'next_url': next_url});
 };
 
-exports.logout = function(req, res) {
+exports.logout = function(req, res, next) {
+  var user = req.user;
 
+  // Clear cookie id
+  user.cookie_id = null;
+  user.save(ehandler);
+
+  // Clear cookie
+  res.clearCookie('login-id');
+
+  // redirect
+  res.redirect('/');
 };

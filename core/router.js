@@ -5,6 +5,7 @@
  */
 var express = require('express');
 var isArray = require('util').isArray;
+var _ = require('underscore');
 
 var router;
 
@@ -27,17 +28,35 @@ exports.loadRouter = registerRoutes = function(app) {
           throw new Error('Error loading routes of ' + appname + ':\n route is not a array.');
         }
 
-        var url = route[0], fn = route[1];
+        var url = route[0];
 
         if(typeof(url) !== 'string') {
           throw new Error('Error loading routes of ' + appname + ':\n route[0] must be a url');
         }
 
-        if(typeof(fn) != 'function') {
-          throw new Error('Error loading routes of ' + appname + ':\n route[1] must be a function');
+        var midds = route[1],
+          handler = route[2];
+
+        if(handler === undefined) {
+          midds = [];
+          handler = route[1];
+        }
+       
+        if(typeof(handler) != 'function') {
+          throw new Error('Error loading routes of ' + appname + ':\n handler must be function');
         }
         
-        router.all(url, fn);
+        if(! _.isArray(midds)) {
+          throw new Error('Error loading routes of ' + appname + ':\n midds must be arrays of function(s)');
+        }
+
+        // Load midds
+        _.each(midds, function(midd) {
+          router.use(url, midd);
+        });
+
+        // Load handler
+        router.all(url, handler);
       });
     } else {
       throw new Error('Error loading routes of ' + appname + ':\n routes_list is not a array.');

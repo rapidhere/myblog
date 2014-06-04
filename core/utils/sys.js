@@ -34,10 +34,10 @@ exports.handleRuntimeError = handleRuntimeError = function(err, req, res, next, 
 // Ehandler is a partial of standard runtime error handler
 // It was designed to use in async cb
 var ehandler;
-exports.ehandler = ehandler = function(req, res, resp_flag) {
+exports.ehandler = ehandler = function(req, res) {
   return function(err) {
     if(err) {
-      handleRuntimeError(err, req, res, undefined, resp_flag);
+      handleRuntimeError(err, req, res, undefined, false);
     }
   };
 };

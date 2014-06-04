@@ -14,15 +14,17 @@ var EventProxy = require('eventproxy');
 var ehandler = require('../core/utils/sys.js').ehandler;
 var _ = require('underscore');
 
-exports.adminMainPage = function(req, res) {
-  return render(res, 'blog/admin-main');
+exports.adminMainPage = function(req, res, next) {
+  render(res, 'blog/admin-main');
+  return ;
 };
 
-exports.adminNewArticle = function(req, res) {
-  return render(res, 'blog/admin-new');
+exports.adminNewArticle = function(req, res, next) {
+  render(res, 'blog/admin-new');
+  return ;
 };
 
-exports.postNewArticle = function(req, res) {
+exports.postNewArticle = function(req, res, next) {
   if(req.method !== 'POST') {
     render404(res);
     return;
@@ -67,14 +69,17 @@ exports.postNewArticle = function(req, res) {
 
     // Save and handle errors
     // Don't response
-    art.save(ehandler(req, res, false));
+    art.save(ehandler(req, res));
     
     // Save success or not, we return to index immediatly
     res.redirect('/blog');
   });
 
-  // TODO: On fail
-  ep.fail(function() {});
+  // On Event Proxy fail
+  // Stop all and call err handler
+  ep.fail(function(err) {
+    next(err);
+  });
 
   // Trigger Event Proxy
   _.each(fr.rets.tags, function(tag_name) {
