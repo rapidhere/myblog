@@ -22,23 +22,42 @@ div#admin-main-container th {
 }
 
 div#admin-main-container th.table-title {
-  width: 200px;
+  width: 120px;
 }
 
 div#admin-main-container th.table-tag {
-  width: 100px;
+  width: 140px;
 }
 
 div#admin-main-container th.table-publish {
-  width: 100px;
+  width: 120px;
 }
 
 div#admin-main-container th.table-modify {
-  width: 100px;
+  width: 120px;
 }
 
 div#admin-main-container th.table-operate {
   width: auto;
+}
+
+div#admin-main-container tr {
+  height: 1.5em;
+}
+
+div#admin-main-container td.table-operate li {
+  margin-left: 0px;
+  margin-right: 5px;
+  padding: 0px;
+}
+
+div#admin-main-container td.table-operate a {
+  color: #2f2f2f;
+}
+
+div#admin-main-container td.table-title a {
+  font-weight: bold;
+  color: #2f2f2f;
 }
 
 div.sidebar-section {

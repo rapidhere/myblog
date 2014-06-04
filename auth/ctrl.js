@@ -11,7 +11,7 @@ var ehandler = require('../core/utils/sys.js').ehandler;
 exports.login = function(req, res, next) {
   // MUST BE POST
   if(req.method !== 'POST') {
-    render404(res);
+    render404(req, res);
     return ;
   }
 
@@ -25,7 +25,7 @@ exports.login = function(req, res, next) {
 
   // Filter error
   if(fr.errs) {
-    renderFilterError(res, fr.errs);
+    renderFilterError(req, res, fr.errs);
     return ;
   }
 
@@ -45,7 +45,7 @@ exports.login = function(req, res, next) {
 
     // No such user
     if(users.length === 0) {
-      renderError(res, '<p><strong>Login Error: </strong> No such User</p>');
+      renderError(req, res, '<p><strong>Login Error: </strong> No such User</p>');
       return ;
     }
 
@@ -59,7 +59,7 @@ exports.login = function(req, res, next) {
     
     // Wrong password
     if(user.password !== fr.rets.password) {
-      renderError(res, '<p><strong>Login Error: </strong> Wrong password</p>');
+      renderError(req, res, '<p><strong>Login Error: </strong> Wrong password</p>');
       return ;
     }
 
@@ -82,7 +82,7 @@ exports.loginPage = function(req, res, next) {
   var next_url = req.query.next_url || '/';
 
   // render page
-  render(res, 'blog/login', {'next_url': next_url});
+  render(req, res, 'blog/login', {'next_url': next_url});
 };
 
 exports.logout = function(req, res, next) {

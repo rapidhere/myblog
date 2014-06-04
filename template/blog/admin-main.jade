@@ -17,6 +17,19 @@ block MainContent
         th.table-modify modify
         th.table-operate operate
 
+      tbody
+        each art in articles
+          tr
+            td.table-title: a(href="/blog/view/#{art._id}")= art.title
+            td.table-tag= art.tags
+            td.table-publish= art.pub_date
+            td.table-modify= art.modify_date
+            td.table-operate
+              ul.horizontal
+                li: a(href="/blog/admin/new-article/#{art._id}"): i.fa.fa-pencil
+                li: a(href="javascript:;"): i.fa.fa-dropbox
+
+
   div.inline-container#admin-side-container
     hr
 

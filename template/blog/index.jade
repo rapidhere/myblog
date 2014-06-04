@@ -7,7 +7,7 @@ block append Statics
 block MainContent 
   each art in articles
     div.container.article-container
-      h2.article-title: a(href="javascript:;")= art.title
+      h2.article-title: a(href="/blog/view/#{art._id}")= art.title
       p.article-date= art.pub_date
       div.article-tags
         i.fa.fa-tags &nbsp;
@@ -15,5 +15,5 @@ block MainContent
       div.markdown.article-content!= art.content
 
       div.article-footer
-        a(href="javascript:;") Read More &nbsp;
+        a(href="/blog/view/#{art._id}") Read More &nbsp;
           i.fa.fa-toggle-right

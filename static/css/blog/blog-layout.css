@@ -3,12 +3,12 @@ div.outter {
 }
 
 div.article-container {
-  padding: 0px 30px;
+  padding: 0px 35px;
   margin-bottom: 48px;
 }
 
-div.article-container h2.article-title>a {
-  font-family: serif;
+div.article-container h2.article-title>a, div.article-container h2.article-title{
+  font-family: "Times New Roman", "Georgia", serif;
   color: #343e5f;
   font-size: 32px;
 }
@@ -64,7 +64,19 @@ div#header-container {
   padding-left: 30px;
 
   position: relative;
-  margin-bottom: 48px;
+}
+
+div#header-container h1>a {
+  font-size: 40px;
+  color: #2f2f2f;
+}
+
+div#header-container h1>a:hover {
+  color: #1085d9;
+}
+
+div#header-container h1>a:visited {
+  color: #2f2f2f;
 }
 
 div#header-container h6 {
@@ -73,7 +85,7 @@ div#header-container h6 {
 
 div#searchbar-container {
   position: absolute;
-  top: 36px;
+  top: 40px;
   right: 0;
 }
 
@@ -90,7 +102,7 @@ div#searchbar-container input{
 a#search-mark {
   position: absolute;
 
-  top: 43px;
+  top: 47px;
   right: 0;
 
   margin-right: 30px;
@@ -104,6 +116,7 @@ a#search-mark:hover {
 }
 
 div#main-container {
+  margin-top: 64px;
 }
 
 div#footer-container {
@@ -125,4 +138,12 @@ div#footer-container p#poweredby {
 
 div#footer-container p#copyright {
   float: right;
+}
+
+div#admin-mark-container {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+
+  color: #99aa99;
 }

@@ -21,7 +21,7 @@ exports.handleRuntimeError = handleRuntimeError = function(err, req, res, next, 
     if(app.get('debug')) {
       res.send('Server Error:\n' + err.stack);
     } else {
-      renderError(res, '<p>' + '<strong>Internal Server Error</strong>: please contact ' + app.get('root_mail') + '</p>');
+      renderError(req, res, '<p>' + '<strong>Internal Server Error</strong>: please contact ' + app.get('root_mail') + '</p>');
     }
   }
 

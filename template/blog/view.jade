@@ -1,0 +1,17 @@
+extends blog-layout
+
+block Title
+  title= "BLOG: " + article.title
+
+block append Statics
+  link(href="#{static_url}/css/markdown.css" rel="stylesheet" type="text/css")
+
+block MainContent
+  div.container.article-container
+    h2.article-title= article.title
+    p.article-date= article.pub_date
+    div.article-tags
+      i.fa.fa-tags &nbsp;
+      = article.tags
+
+    div.markdown.article-content!= article.content

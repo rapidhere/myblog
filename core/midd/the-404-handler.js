@@ -9,7 +9,7 @@ var the404Handler = function(req, res, next) {
   logger.logWarning(req.ip, 'Unknown request: '  + req.path);
 
   res.status(404);
-  render(res, '404page');
+  render(req, res, '404page');
 
   return;
 };

@@ -13,14 +13,24 @@ block MainContent
   div.container#editor-container
     form(method="POST" action="/blog/admin/post-new-article")
       div.container.form-group#extra-info-container
+        if article
+          input.form-control(name="title" placeholder="Title" value="#{article.title}")
+        else
           input.form-control(name="title" placeholder="Title")
 
-        div.form-group
+
+      div.form-group
+        if article
+          input.form-control(name="tags" placeholder="Tags" value="#{article.tags}")
+        else
           input.form-control(name="tags" placeholder="Tags")
       
       div.container#content-container
         div.container.form-group#markdown-container
-          textarea.form-control(name="content" placeholder="Content" tabindex="-1")
+          if article
+            textarea.form-control(name="content" placeholder="Content" tabindex="-1")= article.content
+          else
+            textarea.form-control(name="content" placeholder="Content" tabindex="-1")
 
         div.container.markdown#preview-container
 

@@ -6,6 +6,9 @@ div.markdown {
 div.markdown p {
 	font-size: 14px;
 	line-height: 1.5;
+	
+	margin-top: 5px;
+	margin-bottom: 5px;
 }
 
 div.markdown ul, ol {
@@ -18,6 +21,7 @@ div.markdown ul, ol {
 
 div.markdown li {
 	margin-bottom: 10px;
+	line-height: 1.5;
 }
 
 div.markdown p>code, div.markdown li>code {
@@ -26,6 +30,8 @@ div.markdown p>code, div.markdown li>code {
 	padding-right: 5px;
 	border: 1px solid #afafaf;
 	border-radius: 4px;
+	
+	color: #871e0c;
 }
 
 div.markdown pre {

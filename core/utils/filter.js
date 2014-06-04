@@ -7,7 +7,7 @@ var _ = require('underscore');
 // Render the err return by `clean` function to error page template
 var renderError = require('./template.js').renderError;
 var renderFilterError;
-exports.renderFilterError = renderFilterError = function(res, err) {
+exports.renderFilterError = renderFilterError = function(req, res, err) {
   if(_.size(err) === 0) {
     throw new Error('Must has at least on error to render!');
   }
@@ -15,6 +15,6 @@ exports.renderFilterError = renderFilterError = function(res, err) {
   var key = _.keys(err)[0];
   var inf = err[key];
   
-  return renderError(res,
+  return renderError(req, res,
     '<p><strong>Form error:</strong> ' + inf + '</p>');
 };

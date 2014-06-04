@@ -8,12 +8,16 @@ block append Statics
   script(src="#{static_url}/js/blog/searchbar.js")
 
 block Content
+  div.container#admin-mark-container
+    if user
+      | Welcome Administrator!
+
   div.container#header-container
-    h1 RapiD is a JOKER
+    h1: a(href="/blog/index") RapiD is a JOKER
     h6 码农，电竞，伪摇狗
 
     block ExtraHeader
-  
+
   div.container#main-container
     block MainContent
   

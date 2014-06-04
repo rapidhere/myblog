@@ -6,6 +6,7 @@ var render = templateUtils.render;
 var render404 = templateUtils.render404;
 var renderError = templateUtils.renderError;
 var renderFilterError = require('../core/utils/filter.js').renderFilterError;
+var compileMarkdown = require('./utils.js').compileMarkdown;
 
 var mongoose = require('mongoose');
 var ArticleFilter = require('./filter.js').ArticleFilter;
@@ -13,20 +14,58 @@ var getTagOrCreate = require('./utils.js').getTagOrCreate;
 var EventProxy = require('eventproxy');
 var ehandler = require('../core/utils/sys.js').ehandler;
 var _ = require('underscore');
+var strftime = require('strftime');
 
 exports.adminMainPage = function(req, res, next) {
-  render(res, 'blog/admin-main');
+  var tmfmt = function(d) {
+    return strftime('%H:%M:%S-%b %d', d);
+  };
+
+  // Fetch all articles
+  // Get Model
+  var Article = mongoose.model('Article');
+
+  // Fetch
+  Article
+  .find()
+  .populate('tags', 'tag_name')
+  .sort('-pub_date')
+  .exec(function(err, _articles) {
+    // Handle error
+    if(err) {
+      next(err);
+      return ;
+    }
+
+    // Filter
+    var articles = _.map(_articles, function(art) {
+      return {
+        '_id': art._id,
+        'title': art.title,
+        'content': compileMarkdown(art.content),
+        'pub_date': tmfmt(art.pub_date),
+        'modify_date': tmfmt(art.modify_date),
+        'tags': _.pluck(art.tags, 'tag_name'),
+      };
+    });
+
+    // render
+    render(req, res, 'blog/admin-main', {'articles': articles});
+  });
   return ;
 };
 
 exports.adminNewArticle = function(req, res, next) {
-  render(res, 'blog/admin-new');
-  return ;
+  var aid = req.params.aid;
+  if(aid === undefined) {
+    render(req, res, 'blog/admin-new');
+    return ;
+  }
 };
 
 exports.postNewArticle = function(req, res, next) {
   if(req.method !== 'POST') {
-    render404(res);
+    render404(req, res);
     return;
   }
 
@@ -38,7 +77,7 @@ exports.postNewArticle = function(req, res, next) {
   });
 
   if(fr.errs) {
-    renderFilterError(res, fr.errs);
+    renderFilterError(req, res, fr.errs);
     return;
   }
 
