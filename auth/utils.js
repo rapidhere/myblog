@@ -11,5 +11,5 @@ exports.genCookieId = function(email) {
   var sha1 = crypto.createHash('sha1');
   sha1.update(s);
 
-  return s.digest('hex');
+  return sha1.digest('hex');
 };

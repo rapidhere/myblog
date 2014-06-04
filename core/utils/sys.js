@@ -5,6 +5,7 @@ var logger = require('../logger.js').getLogger();
 var app = global.app;
 var _ = require('underscore');
 var renderError = require('./template.js').renderError;
+var crypto = require('crypto');
 
 // The standard Runtime Error Handler
 // The Runtime Error specify the error unhandled or crtical in runtime
@@ -39,4 +40,13 @@ exports.ehandler = ehandler = function(req, res, resp_flag) {
       handleRuntimeError(err, req, res, undefined, resp_flag);
     }
   };
+};
+
+// Hash password
+var hashPassword;
+exports.hashPassword = hashPassword = function(pass) {
+  var sha1 = crypto.createHash('sha1');
+  sha1.update(pass);
+
+  return sha1.digest('hex');
 };

@@ -26,6 +26,9 @@ var UserSchema = new Schema({
   'cookie_id': String,
 });
 
+// Hash password after save
+
+
 // Register User Model
 var User = mongoose.model('User', UserSchema);
 

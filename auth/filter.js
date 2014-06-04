@@ -3,7 +3,7 @@
  */
 
 var Filter = require('../core/filter.js').Filter;
-var crypto = require('crypto');
+var hashPassword = require('../core/utils/sys.js').hashPassword;
 
 // Login Form Filter
 var loginEmailFilter = function(e) {
@@ -22,10 +22,8 @@ var loginEmailFilter = function(e) {
 };
 
 var loginPasswordFilter = function(p) {
-  var sha1 = crypto.createHash('sha1');
-  sha1.update(p);
   return {
-    'ret': sha1.digest('hex'),
+    'ret': hashPassword(p),
     'err': '',
   };
 };
