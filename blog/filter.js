@@ -9,7 +9,7 @@ var _ = require('underscore');
 var tagsFilter = function(tag_string) {
   var tags = [];
 
-  tag_string.split(';').forEach(function(t) {
+  tag_string.split(',').forEach(function(t) {
     t = t.trim();
     if(t) {
       tags = tags.concat(t);

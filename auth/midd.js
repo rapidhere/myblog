@@ -16,7 +16,7 @@ exports.checkAdmin = checkAdmin = function(req, res, next) {
 
   // No login id
   if(! _.has(req.cookies, 'login-id')) {
-    renderError(res, '<p><strong>Access Denied:</strong> Please login as administrator first!</p>');
+    renderError(req, res, '<p><strong>Access Denied:</strong> Please login as administrator first!</p>');
     return ;
   }
 
@@ -35,7 +35,7 @@ exports.checkAdmin = checkAdmin = function(req, res, next) {
     
     // No such user
     if(users.length === 0) {
-      renderError(res, '<p><strong>Access Denied:</strong> Invalid Admin login-id!</p>');
+      renderError(req, res, '<p><strong>Access Denied:</strong> Invalid Admin login-id!</p>');
       return ;
     } else {
       // Assign it to req object

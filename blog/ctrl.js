@@ -58,21 +58,12 @@ exports.index = function(req, res, next) {
 };
 
 exports.viewPage = function(req, res, next) {
-  // get art id
-  var aid;
-  try {
-    aid = new ObjectId(req.params.id);
-  } catch(err) {
-    renderError(req, res, '<p><strong>Article Error: </strong> Invalid Article id</p>');
-    return ;
-  }
-
   // Get model
   var Article = mongoose.model('Article');
 
   // Fetch
   Article
-  .find({'_id': aid})
+  .find({'_id': req.aid})
   .populate('tags', 'tag_name')
   .exec(function(err, _arts) {
     if(err) {

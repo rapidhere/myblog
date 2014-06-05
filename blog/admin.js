@@ -12,7 +12,6 @@ var mongoose = require('mongoose');
 var ArticleFilter = require('./filter.js').ArticleFilter;
 var getTagOrCreate = require('./utils.js').getTagOrCreate;
 var EventProxy = require('eventproxy');
-var ehandler = require('../core/utils/sys.js').ehandler;
 var _ = require('underscore');
 var strftime = require('strftime');
 
@@ -56,11 +55,39 @@ exports.adminMainPage = function(req, res, next) {
 };
 
 exports.adminNewArticle = function(req, res, next) {
-  var aid = req.params.aid;
-  if(aid === undefined) {
-    render(req, res, 'blog/admin-new');
-    return ;
-  }
+  render(req, res, 'blog/admin-new');
+  return ;
+};
+
+exports.adminEditArticle = function(req, res, next) {
+  var aid = req.aid;
+
+  // Get Model
+  var Article = mongoose.model('Article');
+
+  // Fetch
+  Article.findById(aid)
+  .populate('tags', 'tag_name')
+  .exec(function(err, art) {
+    if(err) {
+      next(err);
+      return ;
+    }
+
+    if(! art) {
+      renderError(req, res, '<p><strong>Article Error:</strong> Invalid article id!</p>');
+      return ;
+    }
+
+    var article = {
+      '_id': art._id,
+      'title': art.title,
+      'content': art.content,
+      'tags': _.pluck(art.tags, 'tag_name'),
+    };
+
+    render(req, res, 'blog/admin-new', {'article': article});
+  });
 };
 
 exports.postNewArticle = function(req, res, next) {
@@ -98,7 +125,7 @@ exports.postNewArticle = function(req, res, next) {
 
     // Errors has been handled
     // We just save the article, and return to index of blog
-    var art = new Article;
+    var art = new Article();
 
     art.title = fr.rets.title;
     art.tags = tags;
@@ -107,11 +134,14 @@ exports.postNewArticle = function(req, res, next) {
     art.modify_date = Date.now();
 
     // Save and handle errors
-    // Don't response
-    art.save(ehandler(req, res));
-    
-    // Save success or not, we return to index immediatly
-    res.redirect('/blog');
+    art.save(function(err, article) {
+      if(err) {
+        next(err);
+        return ;
+      }
+
+      res.redirect('/blog/view/' + article._id);
+    });
   });
 
   // On Event Proxy fail
@@ -123,5 +153,99 @@ exports.postNewArticle = function(req, res, next) {
   // Trigger Event Proxy
   _.each(fr.rets.tags, function(tag_name) {
     getTagOrCreate(tag_name, ep.done('got_tags'));
+  });
+};
+
+exports.updateArticle = function(req, res, next) {
+  // MUST POST
+  if(req.method !== 'POST') {
+    render404(req, res);
+    return ;
+  }
+
+  // Clean up
+  var fr = ArticleFilter.clean({
+    'title': req.param('title'),
+    'content': req.param('content'),
+    'tags': req.param('tags'),
+  });
+
+  // Filter Errors
+  if(fr.errs) {
+    renderFilterError(req, res, fr.errs);
+    return ;
+  }
+
+  // get article id
+  var aid = req.aid;
+
+  // Get Model
+  var Article = mongoose.model('Article');
+
+  // expand tags with event proxy
+  var ep = EventProxy();
+
+  ep.after('got_tags', fr.rets.tags.length, function(tags) {
+    ep.emit('filtered_tags', tags);
+  });
+
+  ep.all('filtered_tags', 'got_article', function(tags, _article) {
+    if(! _article) {
+      renderError(req, res, '<p><strong>Article Error:</strong> Invalid article id!</p>');
+      return ;
+    }
+
+    // get article
+    var art = _article;
+    
+    // update info
+    art.title = fr.rets.title;
+    art.content = fr.rets.content;
+    art.tags = _.pluck(tags, '_id');
+    art.modify_date = Date.now();
+
+    // save
+    art.save(function(err, article) {
+      if(err) {
+        next(err);
+        return ;
+      }
+
+      res.redirect('/blog/view/' + article._id);
+    });
+  });
+
+  // Handle error
+  ep.fail(function(err) {
+    next(err);
+  });
+
+  // Filter tags
+  _.each(fr.rets.tags, function(tag_name) {
+    getTagOrCreate(tag_name, ep.done('got_tags'));
+  });
+
+  // Fetch article
+  Article.findById(aid, ep.done('got_article'));
+};
+
+exports.removeArticle = function(req, res, next) {
+  var aid = req.aid;
+
+  // Get Model
+  var Article = mongoose.model('Article');
+
+  // Fetch
+  Article.findByIdAndRemove(aid, function(err, art) {
+    if(err) {
+      next(err);
+    }
+
+    if(! art) {
+      renderError(req, res, '<p><strong>Article Error: </strong> Invalid ariticle id!</p>');
+      return ;
+    }
+
+    res.redirect('/blog/index');
   });
 };

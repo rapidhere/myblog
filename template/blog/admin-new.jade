@@ -11,29 +11,37 @@ block Title
 
 block MainContent
   div.container#editor-container
-    form(method="POST" action="/blog/admin/post-new-article")
-      div.container.form-group#extra-info-container
-        if article
+    if article
+      form(method="POST" action="/blog/admin/post-article/#{article._id}")
+        div.container.form-group#extra-info-container
           input.form-control(name="title" placeholder="Title" value="#{article.title}")
-        else
+
+        div.form-group
+          input.form-control(name="tags" placeholder="Tags" value="#{article.tags}")
+      
+        div.container#content-container
+          div.container.form-group#markdown-container
+            textarea.form-control(name="content" placeholder="Content" tabindex="-1")= article.content
+
+          div.container.markdown#preview-container
+
+        div.container.form-group#submit-container
+          button(type="submit").primary#post-button POST
+          button.default#preview-button PREVIEW
+    else
+      form(method="POST" action="/blog/admin/post-article")
+        div.container.form-group#extra-info-container
           input.form-control(name="title" placeholder="Title")
 
-
-      div.form-group
-        if article
-          input.form-control(name="tags" placeholder="Tags" value="#{article.tags}")
-        else
+        div.form-group
           input.form-control(name="tags" placeholder="Tags")
       
-      div.container#content-container
-        div.container.form-group#markdown-container
-          if article
-            textarea.form-control(name="content" placeholder="Content" tabindex="-1")= article.content
-          else
+        div.container#content-container
+          div.container.form-group#markdown-container
             textarea.form-control(name="content" placeholder="Content" tabindex="-1")
 
-        div.container.markdown#preview-container
+          div.container.markdown#preview-container
 
-      div.container.form-group#submit-container
-        button(type="submit").primary#post-button POST
-        button.default#preview-button PREVIEW
+        div.container.form-group#submit-container
+          button(type="submit").primary#post-button POST
+          button.default#preview-button PREVIEW
