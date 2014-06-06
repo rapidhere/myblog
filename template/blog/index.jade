@@ -17,3 +17,12 @@ block MainContent
       div.article-footer
         a(href="/blog/view/#{art._id}") Read More &nbsp;
           i.fa.fa-toggle-right
+
+  div.container#pagination-container
+    if pagination.prev
+      div.inline-container#prev-page-container
+        a(href="/blog/index/#{pagination.prev}") PREV PAGES
+
+    if pagination.next
+      div.inline-container#next-page-container
+        a(href="/blog/index/#{pagination.next}") NEXT PAGES

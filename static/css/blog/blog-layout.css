@@ -154,3 +154,28 @@ div#admin-mark-container {
 
   color: #99aa99;
 }
+
+div#pagination-container {
+  margin: 0px 30px;
+  margin-bottom: 20px;
+}
+
+div#prev-page-container a, div#next-page-container a{
+  color: white;
+}
+
+div#prev-page-container, div#next-page-container {
+  background-color: #1085d9;
+
+  padding: 3px 14px;
+}
+
+div#prev-page-container {
+  float: left;
+  clear: none;
+}
+
+div#next-page-container {
+  float: right;
+  clear: none;
+}
