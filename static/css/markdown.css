@@ -14,17 +14,14 @@ div.markdown p {
 div.markdown ul, ol {
 	list-style-position: outside;
 	padding-left: 28px;
-	padding-top: 14px;
-	padding-bottom: 14px;
+	padding-top: 5px;
+	padding-bottom: 5px;
 	font-size: 14px;
 }
 
 div.markdown li {
 	margin-bottom: 10px;
 	line-height: 1.5;
-}
-
-div.markdown li>p {
 }
 
 div.markdown p>code, div.markdown li>code {
@@ -95,4 +92,23 @@ div.markdown a:visited {
 
 div.markdown img {
 	width: 100%;
+}
+
+div.markdown blockquote {
+	padding-top: 3px;
+	padding-bottom: 3px;
+	padding-left: 28px;
+	border-left: 4px solid #bfbfbf;
+}
+
+div.markdown blockquote>p {
+	color: #7f7f7f;
+}
+
+div.markdown blockquote>:first-child {
+	margin-top: 0px;
+}
+
+div.markdown blockquote>:last-child {
+	margin-bottom: 0px;
 }
