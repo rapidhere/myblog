@@ -9,12 +9,13 @@ var path = require('path');
 
 // Generate a simple String Validator for schema usage
 var generalStringValidator;
-exports.generalStringValidator = generalStringValidator = function(pattern, errmsg) {
+exports.generalStringValidator = generalStringValidator =
+function(pattern, errmsg) {
   return [
     function(s) {
       var r = s.match(pattern);
 
-      if(!r || !r[0] || r[0].length != s.length) {
+      if(!r || !r[0] || r[0].length !== s.length) {
         return false;
       }
 

@@ -1,7 +1,6 @@
 /**
  * A simple server for development usage
  */
-
 var fs = require('fs');
 
 var pid = process.pid;

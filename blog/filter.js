@@ -3,7 +3,6 @@
  */
 
 var Filter = require('../core/filter.js').Filter;
-var _ = require('underscore');
 
 // Convert tags into list
 var tagsFilter = function(tag_string) {

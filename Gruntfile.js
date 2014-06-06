@@ -13,14 +13,48 @@ module.exports = function(grunt) {
 
     // Lint codes
     'jshint': {
-      'all': {
+      'options': {
+        'ignores': ['./node_modules/**/*.js', './static/js/*.js'],
+
+        'curly': true,
+        'eqeqeq': true,
+        'forin': true,
+        'freeze': true,
+        'immed': true,
+        'indent': 4,
+        'newcap': true,
+        'quotmark': 'single',
+        'undef': true,
+        'unused': true,
+        'maxlen': 80,
+      },
+
+      'node-files': {
         'options': {
-          'ignores': ['./node_modules/**/*.js', './static/js/*.js'],
+          'node': true,
         },
+
         'files': {
-          'src': ['**/*.js'],
+          'src': ['**/*.js', '!static/js/**/*.js', '!**/routes.js'],
         }
-      }
+      },
+
+      'browser-files': {
+        'options': {
+          'jquery': true,
+          'browser': true,
+          'strict': true,
+          'maxlen': 120,
+
+          'globals': {
+            'markdown': true,
+          }
+        },
+
+        'files': {
+          'src': './static/js/**/*.js',
+        },
+      },
     }
   });
 

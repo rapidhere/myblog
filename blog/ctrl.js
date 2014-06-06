@@ -3,10 +3,7 @@ var renderError = require('../core/utils/template.js').renderError;
 var _ = require('underscore');
 var app = global.app;
 var mongoose = require('mongoose');
-var EventProxy = require('eventproxy');
-var ehandler = require('../core/utils/sys.js').ehandler;
 var compileMarkdown = require('./utils.js').compileMarkdown;
-var ObjectId = mongoose.Types.ObjectId;
 
 // The blog mainpage
 exports.index = function(req, res, next) {
@@ -73,7 +70,8 @@ exports.viewPage = function(req, res, next) {
 
     // No such art
     if(_arts.length === 0) {
-      renderError(req, res, '<p><strong>Article Error: </strong> Invalid Article id</p>');
+      renderError(req, res,
+        '<p><strong>Article Error: </strong> Invalid Article id</p>');
       return ;
     }
 

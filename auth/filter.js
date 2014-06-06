@@ -1,7 +1,6 @@
 /**
  * Filters for auth module
  */
-
 var Filter = require('../core/filter.js').Filter;
 var hashPassword = require('../core/utils/sys.js').hashPassword;
 
@@ -10,7 +9,7 @@ var loginEmailFilter = function(e) {
   var m = e.match(/[a-zA-Z0-9]{5,}@[a-zA-Z0-9]{3,6}\.[a-zA-Z0-9.]{3,5}/g);
   if(m === null || m[0].length !== e.length) {
     return {
-      'err': "Wrong Email Format",
+      'err': 'Wrong Email Format',
       'ret': null,
     };
   }

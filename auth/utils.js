@@ -1,7 +1,6 @@
 /**
  * Some helper functions
  */
-
 var crypto = require('crypto');
 
 // Hash a login cookie id

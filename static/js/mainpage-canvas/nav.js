@@ -1,4 +1,6 @@
 (function($) {
+  'use strict';
+
   var nav_item = [
     ['BLOG', 'blog'],
     ['GITHUB', 'https://github.com/rapidhere'],

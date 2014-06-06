@@ -1,4 +1,6 @@
 (function($) {
+  'use strict';
+
   $(document).ready(function() {
     var $sinput = $('#searchbar-container input');
     var show = false;

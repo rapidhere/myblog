@@ -28,7 +28,8 @@ exports.run = function() {
 
     try {
       if(! bitem.boot(app)) {
-        console.error('Failed to run boot item: ' + boot_filename + ', aborted!');
+        console.error(
+          'Failed to run boot item: ' + boot_filename + ', aborted!');
         process.exit(1);
       }
     } catch(err) {

@@ -12,14 +12,16 @@ exports.checkArticleId = checkArticleId = function(req, res, next) {
   var aid = req.params.aid;
 
   if(aid === undefined) {
-    renderError(req, res, '<p><strong>Article Error: </strong> Require a article id!</p>');
+    renderError(req, res,
+      '<p><strong>Article Error: </strong> Require a article id!</p>');
     return ;
   }
   
   try {
     aid = new ObjectId(aid);
   } catch(err) {
-    renderError(req, res, '<p><strong>Article Error: </strong> Invalid article id!</p>');
+    renderError(req, res,
+      '<p><strong>Article Error: </strong> Invalid article id!</p>');
     return ;
   }
 

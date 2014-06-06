@@ -10,7 +10,7 @@ var _ = require('underscore');
 var router;
 
 var loadRouter;
-exports.loadRouter = registerRoutes = function(app) {
+exports.loadRouter = loadRouter = function(app) {
   router = express.Router();
 
   var apps = app.get('apps');
@@ -25,13 +25,17 @@ exports.loadRouter = registerRoutes = function(app) {
     if(isArray(routes_list)) {
       routes_list.forEach(function(route) {
         if(! isArray(route)) {
-          throw new Error('Error loading routes of ' + appname + ':\n route is not a array.');
+          throw new Error(
+            'Error loading routes of ' + 
+            appname + ':\n route is not a array.');
         }
 
         var url = route[0];
 
         if(typeof(url) !== 'string') {
-          throw new Error('Error loading routes of ' + appname + ':\n route[0] must be a url');
+          throw new Error(
+            'Error loading routes of ' + 
+            appname + ':\n route[0] must be a url');
         }
 
         var midds = _.flatten(route[1]),
@@ -42,12 +46,16 @@ exports.loadRouter = registerRoutes = function(app) {
           handler = route[1];
         }
        
-        if(typeof(handler) != 'function') {
-          throw new Error('Error loading routes of ' + appname + ':\n handler must be function');
+        if(typeof(handler) !== 'function') {
+          throw new Error(
+            'Error loading routes of ' + 
+            appname + ':\n handler must be function');
         }
         
         if(! _.isArray(midds)) {
-          throw new Error('Error loading routes of ' + appname + ':\n midds must be arrays of function(s)');
+          throw new Error(
+            'Error loading routes of ' + 
+            appname + ':\n midds must be arrays of function(s)');
         }
 
         // Load midds
@@ -59,7 +67,9 @@ exports.loadRouter = registerRoutes = function(app) {
         router.all(url, handler);
       });
     } else {
-      throw new Error('Error loading routes of ' + appname + ':\n routes_list is not a array.');
+      throw new Error(
+        'Error loading routes of ' + 
+        appname + ':\n routes_list is not a array.');
     }
   });
 

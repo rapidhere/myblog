@@ -9,7 +9,7 @@ var markdown = require('markdown').markdown;
 
 // Get a tag by tagname, if such tag doesn't exist, create a new one
 var getTagOrCreate;
-exports.getTagOrCreate = function(tag_name, callback) {
+exports.getTagOrCreate = getTagOrCreate = function(tag_name, callback) {
   if(! _.isString(tag_name)) {
     throw new Error('Require a string as tag name');
   }

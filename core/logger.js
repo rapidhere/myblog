@@ -35,7 +35,8 @@ Logger.prototype.appendLog = appendLog = function(level, client, txt) {
   var log_txt;
   
   // get current pid
-  var pid = process.pid;
+  // Commented to pass jshint
+  // var pid = process.pid;
 
   // get current time
   var time_string = strftime(this.log_time_format);
@@ -51,16 +52,20 @@ Logger.prototype.appendLog = appendLog = function(level, client, txt) {
 
   log_txt = level_string + '  [' + time_string + '] ' + 
     'FROM ' + client + ' >>>\n' +
-    txt + "\n\n";
+    txt + '\n\n';
   
   // Write async
   this.log_file.write(log_txt);
 };
 
-Logger.prototype.logInfo     = _.partial(appendLog, Logger.prototype.LOG_LV_INFO);
-Logger.prototype.logWarning  = _.partial(appendLog, Logger.prototype.LOG_LV_WARN);
-Logger.prototype.logError    = _.partial(appendLog, Logger.prototype.LOG_LV_ERROR);
-Logger.prototype.logDebug    = _.partial(appendLog, Logger.prototype.LOG_LV_DEBUG);
+Logger.prototype.logInfo = 
+  _.partial(appendLog, Logger.prototype.LOG_LV_INFO);
+Logger.prototype.logWarning = 
+  _.partial(appendLog, Logger.prototype.LOG_LV_WARN);
+Logger.prototype.logError = 
+  _.partial(appendLog, Logger.prototype.LOG_LV_ERROR);
+Logger.prototype.logDebug =
+  _.partial(appendLog, Logger.prototype.LOG_LV_DEBUG);
 
 // Global single logger
 var the_logger = null;
@@ -75,6 +80,6 @@ exports.loadLogger = _.once(loadLogger);
 
 // Get the logger
 var getLogger;
-exports.getLogger = function() {
+exports.getLogger = getLogger = function() {
   return the_logger;
 };

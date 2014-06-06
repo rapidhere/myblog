@@ -45,7 +45,8 @@ exports.login = function(req, res, next) {
 
     // No such user
     if(users.length === 0) {
-      renderError(req, res, '<p><strong>Login Error: </strong> No such User</p>');
+      renderError(req, res,
+        '<p><strong>Login Error: </strong> No such User</p>');
       return ;
     }
 
@@ -59,7 +60,8 @@ exports.login = function(req, res, next) {
     
     // Wrong password
     if(user.password !== fr.rets.password) {
-      renderError(req, res, '<p><strong>Login Error: </strong> Wrong password</p>');
+      renderError(req, res,
+        '<p><strong>Login Error: </strong> Wrong password</p>');
       return ;
     }
 
@@ -77,7 +79,7 @@ exports.login = function(req, res, next) {
   });
 };
 
-exports.loginPage = function(req, res, next) {
+exports.loginPage = function(req, res) {
   // get next url
   var next_url = req.query.next_url || '/';
 
@@ -85,7 +87,7 @@ exports.loginPage = function(req, res, next) {
   render(req, res, 'blog/login', {'next_url': next_url});
 };
 
-exports.logout = function(req, res, next) {
+exports.logout = function(req, res) {
   if(req.user) {
     var user = req.user;
 

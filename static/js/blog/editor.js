@@ -1,4 +1,6 @@
 (function($) {
+  'use strict';
+
   $(document).ready(function() {
     var prev_flag = false;
     var $prev = $('#preview-container').hide();

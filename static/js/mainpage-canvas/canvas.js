@@ -1,4 +1,6 @@
 (function($) {
+  'use strict';
+
   // mouse down?
   var mouse_down_flag = false;
 
@@ -55,7 +57,10 @@
     var surf = $.createSurface('canvas-term', 'cli');
 
     // Config up CLI Surface
-    surf.setGreeting('Canvas Control Terminal, Powered by jquery plugin `jTerm`(https://github.com/rapidhere/jTerm).\nEnter `help` to get help info.\n');
+    surf.setGreeting(
+      'Canvas Control Terminal, Powered by jquery plugin `jTerm`' +
+      '(https://github.com/rapidhere/jTerm).\n' +
+      'Enter `help` to get help info.\n');
     surf.setPrompt('canvas> ');
     
     // Set up cmd parser
@@ -135,8 +140,9 @@
       cur_pos = pos2CanvasPos(e.pageX, e.pageY);
       
       // Call hook
-      if(hook_mouse_down)
+      if(hook_mouse_down) {
         hook_mouse_down();
+      }
       
       // set up pos
       start_pos = cur_pos;
@@ -154,8 +160,9 @@
       cur_pos = pos2CanvasPos(e.pageX, e.pageY);
 
       // Call hook
-      if(hook_mouse_up)
+      if(hook_mouse_up) {
         hook_mouse_up();
+      }
 
       // set up pos
       last_pos = cur_pos;
@@ -169,8 +176,9 @@
         cur_pos = pos2CanvasPos(e.pageX, e.pageY);
 
         // Call hook
-        if(hook_mouse_move)
+        if(hook_mouse_move) {
           hook_mouse_move();
+        }
 
         // set up pos
         last_pos = cur_pos;

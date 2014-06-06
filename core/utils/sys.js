@@ -3,14 +3,14 @@
  */
 var logger = require('../logger.js').getLogger();
 var app = global.app;
-var _ = require('underscore');
 var renderError = require('./template.js').renderError;
 var crypto = require('crypto');
 
 // The standard Runtime Error Handler
 // The Runtime Error specify the error unhandled or crtical in runtime
 var handleRuntimeError;
-exports.handleRuntimeError = handleRuntimeError = function(err, req, res, next, resp_flag) {
+exports.handleRuntimeError = handleRuntimeError =
+function(err, req, res, next, resp_flag) {
   // Log error
   logger.logError(req.ip, 'Error Occurred:\n' + err.stack);
 
@@ -21,7 +21,9 @@ exports.handleRuntimeError = handleRuntimeError = function(err, req, res, next, 
     if(app.get('debug')) {
       res.send('Server Error:\n' + err.stack);
     } else {
-      renderError(req, res, '<p>' + '<strong>Internal Server Error</strong>: please contact ' + app.get('root_mail') + '</p>');
+      renderError(req, res, '<p>' + 
+        '<strong>Internal Server Error</strong>: please contact ' +
+        app.get('root_mail') + '</p>');
     }
   }
 

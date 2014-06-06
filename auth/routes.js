@@ -1,5 +1,4 @@
 var ctrl = require('./ctrl.js');
-var checkAdmin = require('./midd.js').checkAdmin;
 var assignUser = require('./midd.js').assignUser;
 
 module.exports = [

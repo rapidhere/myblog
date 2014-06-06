@@ -131,8 +131,9 @@ FilterUnit.prototype.cleanUp = function(data) {
   }
   
   // Call custom filter
-  if(this.ctrl.filter)
+  if(this.ctrl.filter) {
     return this.ctrl.filter(d);
+  }
   else {
     return {
       'ret': d,
@@ -154,7 +155,7 @@ exports.Filter = Filter = function(controls) {
     controls = {};
   }
   
-  filters = {};
+  var filters = {};
 
   // Add FilterUnit
   _.each(controls, function(val, key) {

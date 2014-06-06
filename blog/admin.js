@@ -54,7 +54,7 @@ exports.adminMainPage = function(req, res, next) {
   return ;
 };
 
-exports.adminNewArticle = function(req, res, next) {
+exports.adminNewArticle = function(req, res) {
   render(req, res, 'blog/admin-new');
   return ;
 };
@@ -75,7 +75,8 @@ exports.adminEditArticle = function(req, res, next) {
     }
 
     if(! art) {
-      renderError(req, res, '<p><strong>Article Error:</strong> Invalid article id!</p>');
+      renderError(req, res,
+        '<p><strong>Article Error:</strong> Invalid article id!</p>');
       return ;
     }
 
@@ -110,7 +111,6 @@ exports.postNewArticle = function(req, res, next) {
 
   // Get model
   var Article = mongoose.model('Article');
-  var Tag = mongoose.model('Tag');
 
   // Filter tags
   // Use Event Proxy
@@ -183,7 +183,7 @@ exports.updateArticle = function(req, res, next) {
   var Article = mongoose.model('Article');
 
   // expand tags with event proxy
-  var ep = EventProxy();
+  var ep = new EventProxy();
 
   ep.after('got_tags', fr.rets.tags.length, function(tags) {
     ep.emit('filtered_tags', tags);
@@ -191,7 +191,8 @@ exports.updateArticle = function(req, res, next) {
 
   ep.all('filtered_tags', 'got_article', function(tags, _article) {
     if(! _article) {
-      renderError(req, res, '<p><strong>Article Error:</strong> Invalid article id!</p>');
+      renderError(req, res,
+        '<p><strong>Article Error:</strong> Invalid article id!</p>');
       return ;
     }
 
@@ -242,7 +243,8 @@ exports.removeArticle = function(req, res, next) {
     }
 
     if(! art) {
-      renderError(req, res, '<p><strong>Article Error: </strong> Invalid ariticle id!</p>');
+      renderError(req, res,
+        '<p><strong>Article Error: </strong> Invalid ariticle id!</p>');
       return ;
     }
 

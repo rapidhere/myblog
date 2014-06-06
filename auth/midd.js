@@ -1,7 +1,6 @@
 /**
  * Some middlewares provided by auth module
  */
-
 var _ = require('underscore');
 var mongoose = require('mongoose');
 var renderError = require('../core/utils/template.js').renderError;
@@ -50,7 +49,9 @@ exports.assignUser = assignUser = function(req, res, next) {
 var checkLogin;
 exports.checkLogin = checkLogin = function(req, res, next) {
   if(! _.has(req, 'user')) {
-    renderError(req, res, '<p><strong>Access Denied:</strong> Please <a href="/auth/loginPage">login</a> first!</p>');
+    renderError(req, res,
+      '<p><strong>Access Denied:</strong> Please <a href="/auth/loginPage">' +
+      'login</a> first!</p>');
     return ;
   }
 
@@ -69,7 +70,9 @@ exports.checkAdmin = checkAdmin = function(req, res, next) {
 
   // Check admin mark
   if(! req.user.admin) {
-    renderError(req, res, '<p><strong>Access Denied:</strong> Permission not required, please login as administrator!</p>');
+    renderError(req, res,
+      '<p><strong>Access Denied:</strong>' +
+      'Permission not required, please login as administrator!</p>');
     return ;
   }
 

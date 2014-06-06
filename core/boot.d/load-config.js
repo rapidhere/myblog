@@ -3,6 +3,7 @@
  */
 
 var path = require('path');
+var os = require('os');
 
 exports.boot = function(app) {
   var config = require('../../config.js');
@@ -24,7 +25,8 @@ exports.boot = function(app) {
   app.set('debug', config.debug || false);
 
   // static root = `root`/public
-  app.set('static_root', config.static_root || os.path.join(__dirname, '../../public'));
+  app.set('static_root', 
+    config.static_root || os.path.join(__dirname, '../../public'));
 
   // static url = /static
   app.set('static_url', config.static_url || '/static');
