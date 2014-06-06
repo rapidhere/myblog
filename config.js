@@ -20,7 +20,6 @@ exports.static_url = '/static';
 
 // availabe apps
 exports.apps = [
-  'mainpage-snake',
   'blog',
   'auth',
   'term',

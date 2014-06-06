@@ -3,6 +3,7 @@ var checkAdmin = require('../auth/midd.js').checkAdmin;
 var checkArticleId = require('./midd.js').checkArticleId;
 
 module.exports = [
+  ['/', ctrl.index],
   ['/blog', ctrl.index],
   ['/blog/index', ctrl.index],
   ['/blog/index/:page', ctrl.index],
