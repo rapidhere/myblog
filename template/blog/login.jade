@@ -8,6 +8,11 @@ block append Statics
       margin-bottom: 24px;
     }
 
+  script.
+    $(document).ready(function() {
+      $('#form-container').hide().fadeIn(3000);
+    });
+
 block MainContent
   div.align-center#form-container
     h5 Login as Administrator
