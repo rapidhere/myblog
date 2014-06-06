@@ -6,17 +6,17 @@ var _ = require('underscore');
 var mongoose = require('mongoose');
 var renderError = require('../core/utils/template.js').renderError;
 
-// Check if the user has logined as admin
-var checkAdmin;
-exports.checkAdmin = checkAdmin = function(req, res, next) {
+// Assign user to req object
+var assignUser;
+exports.assignUser = assignUser = function(req, res, next) {
   // No cookie support, do nothing
   if(req.cookies === undefined) {
     next();
   }
 
-  // No login id
+  // No login id, do nothing
   if(! _.has(req.cookies, 'login-id')) {
-    renderError(req, res, '<p><strong>Access Denied:</strong> Please login as administrator first!</p>');
+    next();
     return ;
   }
 
@@ -33,9 +33,9 @@ exports.checkAdmin = checkAdmin = function(req, res, next) {
       return ;
     }
     
-    // No such user
+    // No such user, do nothing
     if(users.length === 0) {
-      renderError(req, res, '<p><strong>Access Denied:</strong> Invalid Admin login-id!</p>');
+      next();
       return ;
     } else {
       // Assign it to req object
@@ -43,4 +43,43 @@ exports.checkAdmin = checkAdmin = function(req, res, next) {
       next();
     }
   });
+
 };
+
+// Check login
+var checkLogin;
+exports.checkLogin = checkLogin = function(req, res, next) {
+  if(! _.has(req, 'user')) {
+    renderError(req, res, '<p><strong>Access Denied:</strong> Please <a href="/auth/loginPage">login</a> first!</p>');
+    return ;
+  }
+
+  next();
+};
+
+// Must assign user and then check login
+// Check if the user has logined as admin
+var checkAdmin;
+exports.checkAdmin = checkAdmin = function(req, res, next) {
+  // Must have a user object, if no user object, do nothing
+  if(! _.has(req, 'user')) {
+    next();
+    return ;
+  }
+
+  // Check admin mark
+  if(! req.user.admin) {
+    renderError(req, res, '<p><strong>Access Denied:</strong> Permission not required, please login as administrator!</p>');
+    return ;
+  }
+
+  next();
+};
+
+// Combo: assignUser + checkLogin
+var assignLogin;
+exports.assignLogin = assignLogin = [assignUser, checkLogin];
+
+// Combo: assignUser + checkLogin + checkAdmin
+var assignAdmin;
+exports.assignAdmin = assignAdmin = [assignUser, checkLogin, checkAdmin];

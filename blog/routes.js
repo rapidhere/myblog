@@ -1,17 +1,18 @@
 var ctrl = require('./ctrl.js');
-var checkAdmin = require('../auth/midd.js').checkAdmin;
+var assignAdmin = require('../auth/midd.js').assignAdmin;
+var assignUser = require('../auth/midd.js').assignUser;
 var checkArticleId = require('./midd.js').checkArticleId;
 
 module.exports = [
-  ['/', ctrl.index],
-  ['/blog', ctrl.index],
-  ['/blog/index', ctrl.index],
-  ['/blog/index/:page', ctrl.index],
-  ['/blog/view/:aid', [checkArticleId], ctrl.viewPage],
-  ['/blog/admin', [checkAdmin], ctrl.adminMainPage],
-  ['/blog/admin/new-article/:aid', [checkAdmin, checkArticleId], ctrl.adminEditArticle],
-  ['/blog/admin/new-article', [checkAdmin], ctrl.adminNewArticle],
-  ['/blog/admin/post-article', [checkAdmin], ctrl.postNewArticle],
-  ['/blog/admin/post-article/:aid', [checkAdmin, checkArticleId], ctrl.updateArticle],
-  ['/blog/admin/remove-article/:aid', [checkAdmin, checkArticleId], ctrl.removeArticle],
+  ['/', [assignUser], ctrl.index],
+  ['/blog', [assignUser], ctrl.index],
+  ['/blog/index', [assignUser], ctrl.index],
+  ['/blog/index/:page', [assignUser], ctrl.index],
+  ['/blog/view/:aid', [assignUser, checkArticleId], ctrl.viewPage],
+  ['/blog/admin', [assignAdmin], ctrl.adminMainPage],
+  ['/blog/admin/new-article/:aid', [assignAdmin, checkArticleId], ctrl.adminEditArticle],
+  ['/blog/admin/new-article', [assignAdmin], ctrl.adminNewArticle],
+  ['/blog/admin/post-article', [assignAdmin], ctrl.postNewArticle],
+  ['/blog/admin/post-article/:aid', [assignAdmin, checkArticleId], ctrl.updateArticle],
+  ['/blog/admin/remove-article/:aid', [assignAdmin, checkArticleId], ctrl.removeArticle],
 ];

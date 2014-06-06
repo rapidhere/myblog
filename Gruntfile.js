@@ -9,9 +9,22 @@ module.exports = function(grunt) {
           'reload': true
         }
       },
+    },
+
+    // Lint codes
+    'jshint': {
+      'all': {
+        'options': {
+          'ignores': ['./node_modules/**/*.js', './static/js/*.js'],
+        },
+        'files': {
+          'src': ['**/*.js'],
+        }
+      }
     }
   });
 
   // load tasks
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
 };

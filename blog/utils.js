@@ -32,7 +32,7 @@ exports.getTagOrCreate = function(tag_name, callback) {
 
     // No such tag, we create one
     if(tags.length === 0) {
-      var tag = new Tag;
+      var tag = new Tag();
       tag.tag_name = tag_name;
       
       // save and call callback

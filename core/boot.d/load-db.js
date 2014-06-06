@@ -8,11 +8,11 @@ exports.boot = function(app) {
   var conf = app.get('db_conf');
 
   // Connect to db
-  var uri = 'mongodb://' + conf.username 
-    + ':' + conf.password
-    + '@' + conf.host
-    + ':' + conf.port
-    + '/' + conf.db;
+  var uri = 'mongodb://' + conf.username + 
+    ':' + conf.password + 
+    '@' + conf.host + 
+    ':' + conf.port + 
+    '/' + conf.db;
 
   mongoose.connect(uri);
   

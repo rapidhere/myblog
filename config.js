@@ -41,4 +41,4 @@ exports.log_dir = path.join(__dirname, 'log');
 exports.log_time_format = '%H:%M:%S %d, %b %Y';
 
 // Article per page
-exports.article_per_page = 5
+exports.article_per_page = 5;

@@ -24,6 +24,9 @@ var UserSchema = new Schema({
 
   // Relative Cookie id
   'cookie_id': String,
+
+  // Admin mark
+  'admin': Boolean,
 });
 
 // Hash password after save

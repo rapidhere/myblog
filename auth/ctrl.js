@@ -86,14 +86,16 @@ exports.loginPage = function(req, res, next) {
 };
 
 exports.logout = function(req, res, next) {
-  var user = req.user;
+  if(req.user) {
+    var user = req.user;
 
-  // Clear cookie id
-  user.cookie_id = null;
-  user.save(ehandler);
+    // Clear cookie id
+    user.cookie_id = null;
+    user.save(ehandler);
 
-  // Clear cookie
-  res.clearCookie('login-id');
+    // Clear cookie
+    res.clearCookie('login-id');
+  }
 
   // redirect
   res.redirect('/');

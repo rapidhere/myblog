@@ -40,9 +40,9 @@
         var $this = $(this);
         var value = $this.val();
 
-        $this.val(value.substring(0, start)
-          + '    '
-          + value.substring(end));
+        $this.val(value.substring(0, start) + 
+          '    ' + 
+          value.substring(end));
 
         this.selectionStart = this.selectionEnd = start + 4;
         e.preventDefault();

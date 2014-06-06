@@ -34,7 +34,7 @@ exports.loadRouter = registerRoutes = function(app) {
           throw new Error('Error loading routes of ' + appname + ':\n route[0] must be a url');
         }
 
-        var midds = route[1],
+        var midds = _.flatten(route[1]),
           handler = route[2];
 
         if(handler === undefined) {
@@ -68,4 +68,4 @@ exports.loadRouter = registerRoutes = function(app) {
 
 exports.getRouter = function() {
   return router;
-}
+};

@@ -19,7 +19,7 @@ var tagsFilter = function(tag_string) {
   return {
     'err': '',
     'ret': tags,
-  }
+  };
 };
 
 // The Article Filter

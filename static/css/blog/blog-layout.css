@@ -99,20 +99,27 @@ div#searchbar-container input{
   background-color: inherit;
 }
 
-a#search-mark {
+a#search-mark, a#admin-mark {
   position: absolute;
 
   top: 47px;
-  right: 0;
-
-  margin-right: 30px;
 
   font-size: 18px;
   color: #7f8f7f;
 }
 
-a#search-mark:hover {
+a#search-mark:hover, a#admin-mark:hover{
   color: #9faf9f;
+}
+
+a#search-mark {
+  right: 0;
+  margin-right: 30px;
+}
+
+a#admin-mark {
+  right: 0;
+  margin-right: 5px;
 }
 
 div#main-container {

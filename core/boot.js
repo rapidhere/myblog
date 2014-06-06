@@ -36,4 +36,4 @@ exports.run = function() {
       throw err;
     }
   });
-}
+};

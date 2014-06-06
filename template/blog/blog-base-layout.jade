@@ -10,7 +10,12 @@ block append Statics
 block Content
   div.container#admin-mark-container
     if user
-      | Welcome Administrator!
+      if user.admin
+        != 'Welcome <strong>'
+        = user.nickname
+        != '</strong> !'
+      else
+        = 'Welcome ' + user.nickname + ' !'
 
   div.container#header-container
     h1: a(href="/blog/index") RapiD is a JOKER
