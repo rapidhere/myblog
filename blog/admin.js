@@ -20,23 +20,11 @@ exports.adminMainPage = function(req, res, next) {
     return strftime('%H:%M:%S-%b %d', d);
   };
 
-  // Fetch all articles
-  // Get Model
-  var Article = mongoose.model('Article');
+  // Create event proxy
+  var ep = new EventProxy();
 
-  // Fetch
-  Article
-  .find()
-  .populate('tags', 'tag_name')
-  .sort('-pub_date')
-  .exec(function(err, _articles) {
-    // Handle error
-    if(err) {
-      next(err);
-      return ;
-    }
-
-    // Filter
+  ep.all('got_articles', 'got_tags', function(_articles, _tags) {
+    // Filter articles
     var articles = _.map(_articles, function(art) {
       return {
         '_id': art._id,
@@ -48,9 +36,42 @@ exports.adminMainPage = function(req, res, next) {
       };
     });
 
+    // Filter tags
+    var tags = _.map(_tags, function(tag) {
+      return {
+        '_id': tag._id,
+        'tag_name': tag.tag_name,
+      };
+    });
+    
     // render
-    render(req, res, 'blog/admin-main', {'articles': articles});
+    render(req, res, 'blog/admin-main', {
+      'articles': articles,
+      'tags': tags,
+    });
   });
+
+  // Fetch all articles
+  // Get Model
+  var Article = mongoose.model('Article');
+
+  // Fetch
+  Article
+  .find()
+  .populate('tags', 'tag_name')
+  .sort('-pub_date')
+  .exec(ep.done('got_articles'));
+
+  // Fetch all tags
+  // Get Model
+  var Tag = mongoose.model('Tag');
+
+  // Fetch
+  Tag
+  .find()
+  .sort('tag_name')
+  .exec(ep.done('got_tags'));
+
   return ;
 };
 
@@ -77,6 +98,7 @@ exports.adminEditArticle = function(req, res, next) {
     if(! art) {
       renderError(req, res,
         '<p><strong>Article Error:</strong> Invalid article id!</p>');
+
       return ;
     }
 
@@ -198,7 +220,7 @@ exports.updateArticle = function(req, res, next) {
 
     // get article
     var art = _article;
-    
+
     // update info
     art.title = fr.rets.title;
     art.content = fr.rets.content;
@@ -249,5 +271,46 @@ exports.removeArticle = function(req, res, next) {
     }
 
     res.redirect('/blog/index');
+  });
+};
+
+exports.removeTag = function(req, res, next) {
+  var tid = req.tid;
+
+  // Get Model
+  var Tag = mongoose.model('Tag');
+  var Article = mongoose.model('Article');
+
+  // Fetch and remove tag from relative article
+  Article.update({
+    'tags': tid 
+  }, {
+    '$pull': {
+      'tags': tid,
+    }
+  }, {
+    'multi': true,
+  }, function(err) {
+    if(err) {
+      next(err);
+      return ;
+    }
+
+    // Then delete the tag
+    Tag.findByIdAndRemove(tid, function(err, tag) {
+      if(err) {
+        next(err);
+        return ;
+      }
+
+      if(! tag) {
+        renderError(req, res,
+          '<p><strong>Tag Error: </strong> Invalid tag id!</p>');
+        return ;
+      }
+
+      // redirect
+      res.redirect('/blog/admin');
+    });
   });
 };

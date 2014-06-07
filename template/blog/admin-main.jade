@@ -27,7 +27,7 @@ block MainContent
             td.table-operate
               ul.horizontal
                 li: a(href="/blog/admin/new-article/#{art._id}"): i.fa.fa-pencil
-                li: a(href="/blog/admin/remove-article/#{art._id}"): i.fa.fa-dropbox
+                li: a(href="/blog/admin/remove-article/#{art._id}"): i.fa.fa-trash-o
 
 
   div.inline-container#admin-side-container
@@ -45,4 +45,9 @@ block MainContent
     div.contaier.sidebar-section#tag-list-container
       h6 Tags
 
+      ul
+        each tag in tags
+          li 
+            a(href="javascript:;")= tag.tag_name
+            a(href="/blog/admin/remove-tag/#{tag._id}"): i.fa.fa-trash-o
     hr

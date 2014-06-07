@@ -22,7 +22,7 @@ div#admin-main-container th {
 }
 
 div#admin-main-container th.table-title {
-  width: 120px;
+  width: 180px;
 }
 
 div#admin-main-container th.table-tag {
@@ -72,6 +72,7 @@ div.sidebar-section h6 {
 
 div.sidebar-section a {
   color: #2f2f2f;
+  margin-right: 8px;
 }
 
 div.sidebar-section a:hover {
@@ -82,10 +83,10 @@ div.sidebar-section a:visited {
   color: #2f2f2f;
 }
 
-div#operate-list-container ul {
+div.sidebar-section ul {
   list-style: none;
 }
 
-div#operate-list-container li {
+div.sidebar-section li {
   margin-bottom: 12px;
 }

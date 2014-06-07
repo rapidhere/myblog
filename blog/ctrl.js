@@ -20,7 +20,7 @@ exports.index = function(req, res, next) {
   // Check page
   if(_.isNaN(page)) {
     renderError(req, res,
-      "<p><strong>Page Error:</strong> Invalid Page code!</p>");
+      '<p><strong>Page Error:</strong> Invalid Page code!</p>');
     return ;
   }
   

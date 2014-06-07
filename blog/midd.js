@@ -6,7 +6,7 @@ var renderError = require('../core/utils/template.js').renderError;
 var ObjectId = require('mongoose').Types.ObjectId;
 
 // Check the article id
-// And asign it to req object
+// And assign it to req object
 var checkArticleId;
 exports.checkArticleId = checkArticleId = function(req, res, next) {
   var aid = req.params.aid;
@@ -26,5 +26,29 @@ exports.checkArticleId = checkArticleId = function(req, res, next) {
   }
 
   req.aid = aid;
+  next();
+};
+
+// Check the tag id
+// And assign it to req object
+var checkTagId;
+exports.checkTagId = checkTagId = function(req, res, next) {
+  var tid = req.params.tid;
+
+  if(tid === undefined) {
+    renderError(req, res,
+      '<p><strong>Tag Error: </strong> Require a tag id!</p>');
+    return ;
+  }
+
+  try {
+    tid = new ObjectId(tid);
+  } catch(err) {
+    renderError(req, res,
+      '<p><strong>Tag Error: </strong> Invalid tag id!</p>');
+    return ;
+  }
+
+  req.tid = tid;
   next();
 };
