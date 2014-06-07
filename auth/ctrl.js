@@ -6,7 +6,6 @@ var LoginFilter = require('./filter.js').LoginFilter;
 var mongoose = require('mongoose');
 var logger = require('../core/logger.js').getLogger();
 var genCookieId = require('./utils.js').genCookieId;
-var ehandler = require('../core/utils/sys.js').ehandler;
 
 exports.login = function(req, res, next) {
   // MUST BE POST
@@ -87,17 +86,23 @@ exports.loginPage = function(req, res) {
   render(req, res, 'blog/login', {'next_url': next_url});
 };
 
-exports.logout = function(req, res) {
+exports.logout = function(req, res, next) {
   if(req.user) {
     var user = req.user;
 
     // Clear cookie id
     user.cookie_id = null;
-    user.save(ehandler);
+    user.save(function(err) {
+      if(err) {
+        next(err);
+        return ;
+      }
 
-    // Clear cookie
-    res.clearCookie('login-id');
-  }
+      // Clear cookie
+      res.clearCookie('login-id');
+    });
+
+      }
 
   // redirect
   res.redirect('/');

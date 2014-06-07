@@ -7,7 +7,7 @@ div.article-container {
   margin-bottom: 60px;
 }
 
-div.article-container h2.article-title>a, div.article-container h2.article-title{
+div.article-container h2.article-title>a{
   font-family: "Times New Roman", "Georgia", serif;
   color: #343e5f;
   font-size: 32px;
@@ -15,10 +15,6 @@ div.article-container h2.article-title>a, div.article-container h2.article-title
 
 div.article-container h2.article-title>a:hover {
   color: #0075c9;
-}
-
-div.article-container h2.article-title>a:visited {
-  color: #343e5f;
 }
 
 div.article-container .article-tags {
@@ -48,10 +44,6 @@ div.article-container .article-footer {
   color: #1085d9;
 }
 
-.article-footer a:visited {
-  color: #343e5f;
-}
-
 div#header-container h1, h6 {
   display: inline-block;
 
@@ -73,10 +65,6 @@ div#header-container h1>a {
 
 div#header-container h1>a:hover {
   color: #1085d9;
-}
-
-div#header-container h1>a:visited {
-  color: #2f2f2f;
 }
 
 div#header-container h6 {

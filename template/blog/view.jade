@@ -8,7 +8,7 @@ block append Statics
 
 block MainContent
   div.container.article-container
-    h2.article-title= article.title
+    h2.article-title: a(href="javascript:;")= article.title
     p.article-date= article.pub_date
     div.article-tags
       i.fa.fa-tags &nbsp;

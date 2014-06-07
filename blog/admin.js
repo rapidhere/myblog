@@ -51,6 +51,12 @@ exports.adminMainPage = function(req, res, next) {
     });
   });
 
+  // Fetch error
+  ep.fail(function(err) {
+    next(err);
+    return ;
+  });
+
   // Fetch all articles
   // Get Model
   var Article = mongoose.model('Article');

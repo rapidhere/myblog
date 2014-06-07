@@ -10,38 +10,23 @@ var crypto = require('crypto');
 // The Runtime Error specify the error unhandled or crtical in runtime
 var handleRuntimeError;
 exports.handleRuntimeError = handleRuntimeError =
-function(err, req, res, next, resp_flag) {
+function(err, req, res) {
   // Log error
   logger.logError(req.ip, 'Error Occurred:\n' + err.stack);
 
   res.status(500);
-  
-  if(resp_flag === undefined || resp_flag) {
-    // Need response
-    if(app.get('debug')) {
-      res.send('Server Error:\n' + err.stack);
-    } else {
-      renderError(req, res, '<p>' + 
-        '<strong>Internal Server Error</strong>: please contact ' +
-        app.get('root_mail') + '</p>');
-    }
+
+  if(app.get('debug')) {
+    res.send('Server Error:\n' + err.stack);
+  } else {
+    renderError(req, res, '<p>' + 
+      '<strong>Internal Server Error</strong>: please contact ' +
+      app.get('root_mail') + '</p>');
   }
 
   if(app.get('debug')) {
     console.log(err.stack);
   }
-};
-
-// Factory
-// Ehandler is a partial of standard runtime error handler
-// It was designed to use in async cb
-var ehandler;
-exports.ehandler = ehandler = function(req, res) {
-  return function(err) {
-    if(err) {
-      handleRuntimeError(err, req, res, undefined, false);
-    }
-  };
 };
 
 // Hash password
