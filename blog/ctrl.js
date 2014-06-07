@@ -9,9 +9,6 @@ var EventProxy = require('eventproxy');
 
 // The blog mainpage
 exports.index = function(req, res, next) {
-  //Trigger Error
-  next(new Error('Hello World!'));
-
   // Get page code
   var page;
   if(! _.has(req.params, 'page')) {
