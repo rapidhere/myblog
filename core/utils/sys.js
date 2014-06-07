@@ -10,7 +10,7 @@ var crypto = require('crypto');
 // The Runtime Error specify the error unhandled or crtical in runtime
 var handleRuntimeError;
 exports.handleRuntimeError = handleRuntimeError =
-function(err, req, res) {
+function(err, req, res, next) {
   // Log error
   logger.logError(req.ip, 'Error Occurred:\n' + err.stack);
 
@@ -25,7 +25,11 @@ function(err, req, res) {
   }
 
   if(app.get('debug')) {
-    console.log(err.stack);
+    if(next) {
+      console.log(err.stack);
+    } else {
+      console.log(err.stack);
+    }
   }
 };
 
