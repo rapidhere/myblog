@@ -1,6 +1,5 @@
 var render = require('../core/utils/template.js').render;
 var renderError = require('../core/utils/template.js').renderError;
-var render404 = require('../core/utils/template.js').render404;
 var _ = require('underscore');
 var app = global.app;
 var mongoose = require('mongoose');
@@ -155,7 +154,8 @@ exports.search = function(req, res, next) {
       return ;
     }
     // render
-    renderIndexPage(req, res, page, _arts, tot, encodeURI('/blog/search/' + pattern));
+    renderIndexPage(req, res, page, _arts, tot,
+      encodeURI('/blog/search/' + pattern));
   });
   
   // Handle Error
@@ -165,10 +165,11 @@ exports.search = function(req, res, next) {
   
   // get Model
   var Article = mongoose.model('Article');
+  var so;
 
   // Convert scope into standard scope
   if(scope === 'content' || scope === 'article') {
-    var so = {'content': new RegExp('.*' + keywords + '.*')};
+    so = {'content': new RegExp('.*' + keywords + '.*')};
 
     // Fetch
     Article
@@ -182,7 +183,7 @@ exports.search = function(req, res, next) {
     // Count
     Article.count(so, ep.done('counted'));
   } else if(scope === 'title') {
-    var so = {'title': new RegExp('.*' + keywords + '.*')};
+    so = {'title': new RegExp('.*' + keywords + '.*')};
 
     // Fetch
     Article

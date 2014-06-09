@@ -55,7 +55,8 @@ exports.compileMarkdown = compileMarkdown = function(md) {
 
 // Render a article index page
 var renderIndexPage;
-exports.renderIndexPage = renderIndexPage = function(req, res, page, _arts, tot, page_url_prefix) {
+exports.renderIndexPage = renderIndexPage = 
+function(req, res, page, _arts, tot, page_url_prefix) {
   var article_per_page = app.get('article_per_page');
 
   // Page code is too small or too large
@@ -88,7 +89,7 @@ exports.renderIndexPage = renderIndexPage = function(req, res, page, _arts, tot,
         return {
           'tag_name': tag.tag_name,
           'href': encodeURI('/blog/search/tag:' + tag.tag_name),
-        }
+        };
       }),
       'pub_date': art.pub_date.toGMTString(),
       'modify_date': art.modify_date.toGMTString(),
