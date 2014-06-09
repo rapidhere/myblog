@@ -1,0 +1,24 @@
+extends blog-layout.jade
+
+block append Statics
+  style.
+    div#nothing-container {
+      padding: 0px 30px 50px 30px;
+    }
+
+    div#nothing-container p {
+      font-size: 16px;
+    }
+
+    div#nothing-container h6 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+block Title
+  title Found Nothing
+
+block MainContent
+  div.container.align-center#nothing-container
+    h6 Eh~ 看起来
+    p 你要找的东西貌似木有呢=。=

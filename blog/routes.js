@@ -9,6 +9,8 @@ module.exports = [
   ['/blog', [assignUser], ctrl.index],
   ['/blog/index', [assignUser], ctrl.index],
   ['/blog/index/:page', [assignUser], ctrl.index],
+  ['/blog/search/:pattern', [assignUser], ctrl.search],
+  ['/blog/search/:pattern/:page', [assignUser], ctrl.search],
   ['/blog/view/:aid', [assignUser, checkArticleId], ctrl.viewPage],
   ['/blog/admin', [assignAdmin], ctrl.adminMainPage],
   ['/blog/admin/new-article/:aid', [assignAdmin, checkArticleId], ctrl.adminEditArticle],

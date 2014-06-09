@@ -18,5 +18,22 @@
         });
       }
     });
+
+    // render search
+    $sinput.keypress(function(e) {
+      // Enter key
+      if(e.which === 13) {
+        e.preventDefault();
+        
+        // encode url
+        var url = encodeURI('/blog/search/' + $sinput.val());
+
+        // render search
+        window.location.href = url;
+      }
+
+      // Other key, do nothing
+    });
   });
+
 })(jQuery);

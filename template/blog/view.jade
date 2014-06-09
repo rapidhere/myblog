@@ -12,6 +12,11 @@ block MainContent
     p.article-date= article.pub_date
     div.article-tags
       i.fa.fa-tags &nbsp;
-      = article.tags
+
+      each tag, idx in article.tags
+        a(href="#{tag.href}")= tag.tag_name
+
+        if idx !== article.tags.length - 1
+          |,&nbsp;
 
     div.markdown.article-content!= article.content

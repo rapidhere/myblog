@@ -11,7 +11,11 @@ block MainContent
       p.article-date= art.pub_date
       div.article-tags
         i.fa.fa-tags &nbsp;
-        = art.tags
+
+        each tag, idx in art.tags
+          a(href="#{tag.href}")= tag.tag_name
+          if idx !== art.tags.length - 1
+            |, &nbsp;
       div.markdown.article-content!= art.content
 
       div.article-footer
@@ -21,8 +25,8 @@ block MainContent
   div.container#pagination-container
     if pagination.prev
       div.inline-container#prev-page-container
-        a(href="/blog/index/#{pagination.prev}") PREV PAGES
+        a(href="#{pagination.prev}") PREV PAGES
 
     if pagination.next
       div.inline-container#next-page-container
-        a(href="/blog/index/#{pagination.next}") NEXT PAGES
+        a(href="#{pagination.next}") NEXT PAGES
