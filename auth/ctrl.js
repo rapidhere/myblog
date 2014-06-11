@@ -101,8 +101,7 @@ exports.logout = function(req, res, next) {
       // Clear cookie
       res.clearCookie('login-id');
     });
-
-      }
+  }
 
   // redirect
   res.redirect('/');
