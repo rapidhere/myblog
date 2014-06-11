@@ -8,6 +8,7 @@ var fs = require('fs');
 var path = require('path');
 
 // Generate a simple String Validator for schema usage
+// Depcrated!
 var generalStringValidator;
 exports.generalStringValidator = generalStringValidator =
 function(pattern, errmsg) {
