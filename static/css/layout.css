@@ -12,6 +12,7 @@ body {
 	line-height: 1.1;
 
 	background-color: #ecedf0;
+	background: url(/static/img/bg.png) repeat fixed;
 }
 
 h1, h2, h3, h4, h5, h6 {
