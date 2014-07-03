@@ -48,6 +48,6 @@ block MainContent
       ul
         each tag in tags
           li 
-            a(href="javascript:;")= tag.tag_name
             a(href="/blog/admin/remove-tag/#{tag._id}"): i.fa.fa-trash-o
+            a(href="javascript:;")= tag.tag_name
     hr
