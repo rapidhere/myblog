@@ -1,7 +1,7 @@
 #!/bin/bash
 
-DIST_DIR=/var/www/rapidhere.com
-LOG_DIR=/var/log/rapidhere.com
+DIST_DIR=
+LOG_DIR=
 
 # Create directories
 echo Init ...

@@ -1,7 +1,7 @@
 #!/bin/bash
 
-LOG_DIR=/var/log/rapidhere.com
-APP_FILE=/var/www/rapidhere.com/prod.js
+LOG_DIR=
+APP_FILE=
 
 case $1 in 
 	start)
