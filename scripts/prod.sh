@@ -1,7 +1,10 @@
 #!/bin/bash
 
-LOG_DIR=
-APP_FILE=
+LOG_DIR=`tail -1 _config`
+APP_FILE=`head -1 _config`/prod.js
+
+echo $LOG_DIR, $APP_FILE
+exit 0
 
 case $1 in 
 	start)

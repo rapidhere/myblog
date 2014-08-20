@@ -29,8 +29,8 @@ Test [Omitted]
 
 2014-08-17
 Some backend bugs:
-	Wrong Article list when in admin;
-	Wrong Article when use the url '/blog/index';
+	Wrong Article list when in admin; [SOLVED]
+	Wrong Article when use the url '/blog/index'; [SOLVED]
 	500 when use the url '/blog/index/0', should return a 404 response;
 
 The blog has been shutdown since the training.

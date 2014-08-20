@@ -10,13 +10,10 @@ if len(sys.argv) < 3:
 dist_dir = sys.argv[1]
 log_dir = sys.argv[2]
 
-print "Preparing to deploy to %s with log directory %s..." % (dist_dir, log_dir)
+print "Preparing to deploy to:\n\t%s\nwith log directory:\n\t%s\n" % (dist_dir, log_dir)
 
-print "Configure script/deploy.sh ..."
+file("_config", "w").write("%s\n%s\n" % (dist_dir, log_dir))
 
-print "Configure script/prod.sh ..."
+print "done't forget to change the log dir path in config.js ..."
 
-print "Configure script/config-prod.sh ..."
-
-print "Run script/deploy.sh to deploy"
-print "Configure done"
+print "Configurin done ..."

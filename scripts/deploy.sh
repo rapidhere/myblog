@@ -1,7 +1,7 @@
 #!/bin/bash
 
-DIST_DIR=
-LOG_DIR=
+DIST_DIR=`head -1 _config`
+LOG_DIR=`tail -1 _config`
 
 # Create directories
 echo Init ...
