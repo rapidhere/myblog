@@ -12,7 +12,7 @@ exports.debug = true;
 exports.root_mail = 'rapidhere@gmail.com';
 
 // The server port
-exports.port = 8080;
+exports.port = 9090;
 
 // the root path of static files
 exports.static_root = path.join(__dirname, 'static');
