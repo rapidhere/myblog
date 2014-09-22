@@ -8,14 +8,21 @@ block MainContent
   each art in articles
     div.container.article-container
       h2.article-title: a(href="/blog/view/#{art._id}")= art.title
-      p.article-date= art.pub_date
+      p.article-date
+        i.fa.fa-clock-o &nbsp;
+        = art.pub_date
       div.article-tags
         i.fa.fa-tags &nbsp;
-
+      
         each tag, idx in art.tags
           a(href="#{tag.href}")= tag.tag_name
           if idx !== art.tags.length - 1
             |, &nbsp;
+      
+      div.article-comment-count
+        i.fa.fa-comments &nbsp;
+        a(href="/blog/view/#{art._id}#disqus_thread" data-disqus-identifier="#{art._id}")
+
       div.markdown.article-content!= art.content
 
       div.article-footer
@@ -30,3 +37,17 @@ block MainContent
     if pagination.next
       div.inline-container#next-page-container
         a(href="#{pagination.next}") NEXT PAGES
+
+    div.
+      <script type="text/javascript">
+      /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+      var disqus_shortname = 'rapidisajoker'; // required: replace example with your forum shortname
+
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+      }());
+      </script>

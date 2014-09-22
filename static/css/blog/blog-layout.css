@@ -36,6 +36,21 @@ div.article-container .article-date {
   color: #3f3f3f;
 }
 
+div.article-container .article-comment-count {
+  display: inline-block;
+  color: #3f3f3f;
+
+  margin-left: 14px;
+}
+
+div.article-container .article-comment-count a {
+  color: #3f3f3f;
+}
+
+div.article-container .article-comment-count a:hover {
+  color: #1085d9;
+}
+
 div.article-container .article-content {
   margin-top: 32px;
 }
