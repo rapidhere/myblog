@@ -4,8 +4,8 @@ div.markdown {
 }
 
 div.markdown p {
-	font-size: 14px;
-	line-height: 1.5;
+	font-size: 15px;
+	line-height: 1.6;
 	
 	margin-top: 5px;
 	margin-bottom: 5px;
@@ -16,20 +16,24 @@ div.markdown ul, ol {
 	padding-left: 28px;
 	padding-top: 5px;
 	padding-bottom: 5px;
-	font-size: 14px;
+	font-size: 15px;
 }
 
 div.markdown li {
 	margin-bottom: 10px;
-	line-height: 1.5;
+	line-height: 1.6;
 }
 
 div.markdown p>code, div.markdown li>code {
-	font-size: 14px;
-	padding-left: 5px;
-	padding-right: 5px;
+	font-size: 15px;
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-top: 2px;
+	padding-bottom: 1px;
 	border: 1px solid #afafaf;
 	border-radius: 4px;
+	margin-left: 2px;
+	margin-right: 2px;
 	
 	color: #871e0c;
 }
@@ -44,7 +48,7 @@ div.markdown pre {
 
 div.markdown code {
 	font-family: "Consolas", monospace;
-	font-size: 14px;
+	font-size: 15px;
 }
 
 div.markdown h1, div.markdown h2, div.markdown h3, div.markdown h4, div.markdown h5, div.markdown h6 {
@@ -75,7 +79,7 @@ div.markdown h5 {
 }
 
 div.markdown h6 {
-	font-size: 16px;
+	font-size: 17px;
 }
 
 div.markdown a {
