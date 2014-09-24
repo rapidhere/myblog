@@ -43,3 +43,9 @@ exports.log_time_format = '%H:%M:%S %d, %b %Y';
 
 // Article per page
 exports.article_per_page = 4;
+
+// The upload file dir
+exports.upload_root = path.join(__dirname, 'upload');
+
+// The url to fecth upload files
+exports.upload_url = '/upload';

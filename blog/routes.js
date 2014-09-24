@@ -19,4 +19,5 @@ module.exports = [
   ['/blog/admin/post-article/:aid', [assignAdmin, checkArticleId], ctrl.updateArticle],
   ['/blog/admin/remove-article/:aid', [assignAdmin, checkArticleId], ctrl.removeArticle],
   ['/blog/admin/remove-tag/:tid', [assignAdmin, checkTagId], ctrl.removeTag],
+  ['/blog/admin/upload-static', [assignAdmin], ctrl.uploadStatic],
 ];

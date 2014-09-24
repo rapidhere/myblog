@@ -320,3 +320,6 @@ exports.removeTag = function(req, res, next) {
     });
   });
 };
+
+exports.uploadStatic = function(req, res, next) {
+};

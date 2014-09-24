@@ -39,6 +39,7 @@ block MainContent
         li: a(href="/blog/admin/new-article" target="_blank"): i.fa.fa-pencil &nbsp;new article
         li: a(href="javascript:;"): i.fa.fa-calendar-o &nbsp;mainpage man
         li: a(href="javascript:;"): i.fa.fa-desktop &nbsp;statistics
+        li: a(href="javascript:;" id="show-upload-modal-button"): i.fa.fa-file &nbsp; upload 
 
     hr
 
@@ -51,3 +52,15 @@ block MainContent
             a(href="/blog/admin/remove-tag/#{tag._id}"): i.fa.fa-trash-o
             a(href="javascript:;")= tag.tag_name
     hr
+
+  div.modal-container#upload-modal-container
+    div.modal-dialog
+      div.modal-title
+        h3 Upload New File
+      div.modal-content
+        form(method="post" action="/blog/admin/upload-static")
+          div.container.form-group
+            input.form-control(type="file")
+      div.modal-footer
+        div.container.form-group
+          button.primary#upload-button(type="submit") Upload
