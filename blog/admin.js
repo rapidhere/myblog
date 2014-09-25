@@ -366,7 +366,7 @@ exports.uploadStatic = function(req, res, next) {
   });
 
   // get or create upload dir
-  fs.mkdir(getUploadDir(), 0711, function(err) {
+  fs.mkdir(getUploadDir(), 0755, function(err) {
     if(err) {
       // Dir exist
       if(err.code === 'EEXIST') {
