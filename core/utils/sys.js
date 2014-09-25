@@ -5,6 +5,8 @@ var logger = require('../logger.js').getLogger();
 var app = global.app;
 var renderError = require('./template.js').renderError;
 var crypto = require('crypto');
+var strftime = require('strftime');
+var path = require('path');
 
 // The standard Runtime Error Handler
 // The Runtime Error specify the error unhandled or crtical in runtime
@@ -40,4 +42,14 @@ exports.hashPassword = hashPassword = function(pass) {
   sha1.update(pass);
 
   return sha1.digest('hex');
+};
+
+// Get upload dir name
+var getUploadDir;
+exports.getUploadDir = getUploadDir = function() {
+  // Get upload root dir
+  var uplroot = global.app.get('upload_root');
+  var upld = path.join(uplroot, strftime('%Y-%m-%d'));
+
+  return upld;
 };

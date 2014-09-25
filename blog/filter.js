@@ -47,3 +47,19 @@ var ArticleFilter = new Filter({
   },
 });
 exports.ArticleFilter = ArticleFilter;
+
+// Upload file Filter
+var UploadFilter = new Filter({
+  'saveas': {
+    'type': String,
+    'min': 6,
+    'max': 255,
+    'required': true,
+  },
+
+  'file': {
+    'type': String,
+    'required': false, // check by other middleware
+  },
+});
+exports.UploadFilter = UploadFilter;

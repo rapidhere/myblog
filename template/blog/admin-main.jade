@@ -58,9 +58,13 @@ block MainContent
       div.modal-title
         h3 Upload New File
       div.modal-content
-        form(method="post" action="/blog/admin/upload-static")
-          div.container.form-group
-            input.form-control(type="file")
+        form(method="POST" action="/blog/admin/upload-static" enctype="multipart/form-data")
+          div.form-group.container
+            label(for="saveas") Save As
+            input.form-control(type="text" name="saveas" placeholder="Saving Name ...")
+          div.form-group.container
+            label(for="file") File
+            input.form-control(type="file" name="file" multiple=true)
       div.modal-footer
         div.container.form-group
           button.primary#upload-button(type="submit") Upload

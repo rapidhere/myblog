@@ -184,6 +184,13 @@ button.default:hover {
   background-color: #d6d6d6;
 }
 
+label {
+  margin-bottom: 10px;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 700;
+}
+
 div.modal-container {
   width: 100%;
   position: fixed;

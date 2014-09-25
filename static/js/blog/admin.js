@@ -25,5 +25,12 @@
         e.preventDefault();
       }
     });
+
+    // submit button
+    $('#upload-button').click(function(e) {
+      var $form = $modal.find('form');
+      $form.submit();
+      return false;
+    });
   });
 })(jQuery);

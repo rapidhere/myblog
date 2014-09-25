@@ -7,13 +7,18 @@ var render404 = templateUtils.render404;
 var renderError = templateUtils.renderError;
 var renderFilterError = require('../core/utils/filter.js').renderFilterError;
 var compileMarkdown = require('./utils.js').compileMarkdown;
+var logger = require('../core/logger.js').getLogger();
 
 var mongoose = require('mongoose');
 var ArticleFilter = require('./filter.js').ArticleFilter;
+var UploadFilter = require('./filter.js').UploadFilter;
 var getTagOrCreate = require('./utils.js').getTagOrCreate;
 var EventProxy = require('eventproxy');
 var _ = require('underscore');
 var strftime = require('strftime');
+var path = require('path');
+var getUploadDir = require('../core/utils/sys.js').getUploadDir;
+var fs = require('fs');
 
 exports.adminMainPage = function(req, res, next) {
   var tmfmt = function(d) {
@@ -54,7 +59,6 @@ exports.adminMainPage = function(req, res, next) {
   // Fetch error
   ep.fail(function(err) {
     next(err);
-    return ;
   });
 
   // Fetch all articles
@@ -321,5 +325,75 @@ exports.removeTag = function(req, res, next) {
   });
 };
 
+// TODO: this handler now is depend on connect-mutliparty middleware
+//      Which is a sync middleware
+//      This is not good, should rewrite with original multiparty lib
 exports.uploadStatic = function(req, res, next) {
+  // Must be POST
+  if(req.method !== 'POST') {
+    render404(req, res);
+    return;
+  }
+
+  // Clean up
+  var fr = UploadFilter.clean({
+    'saveas': req.param('saveas'),
+    'file': req.param('file'),
+  });
+
+  // handle errors
+  if(fr.errs) {
+    renderFilterError(req, res, fr.errs);
+    return ;
+  }
+
+  // get files
+  var files = _.flatten([req.files.file]);
+  
+  // only one file
+  if(files.length !== 1) {
+    renderError(req, res,
+      '<p><strong>Upload Error</strong>: Please hand one and only one file!</p>');
+    return;
+  }
+
+  // create EventProxy
+  var ep = new EventProxy();
+
+  // error handler
+  ep.fail(function(err) {
+    next(err);
+  });
+
+  // get or create upload dir
+  fs.mkdir(getUploadDir(), 0711, function(err) {
+    if(err) {
+      // Dir exist
+      if(err.code === 'EEXIST') {
+        ep.emit('got_dir', getUploadDir());
+        return;
+      }
+
+      // other err
+      next(err);
+      return;
+    }
+
+    ep.emit('got_dir', getUploadDir());
+  });
+  
+  // move file to saved dir
+  ep.all('got_dir', function(dname) {
+    var f = files[0];
+
+    // move it
+    fs.rename(f.path, path.join(dname, fr.rets.saveas), function(err) {
+      if(err) {
+        next(err);
+        return ;
+      }
+
+      res.redirect('/blog/admin');
+    });
+  });
 };
