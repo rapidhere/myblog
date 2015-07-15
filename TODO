@@ -35,3 +35,7 @@ Some backend bugs:
 
 The blog has been shutdown since the training.
 Don't forget to turn it on again.
+
+2015-7-15
+Rebuild code with es6, ready to migrate platform from nodejs to iojs
+Start to build a api framework
